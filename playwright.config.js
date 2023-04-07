@@ -12,7 +12,7 @@ const { defineConfig, devices } = require('@playwright/test');
  */
 module.exports = defineConfig({
   // testDir: './tests',
-  testDir: './tests-examples',
+  testDir: './src/stepDefinitionsPlaywright/tests',
 
   /* Run tests in files in parallel */
   fullyParallel: true,
