@@ -14,3 +14,6 @@ webdriver-manager
 .vscode/
 allure-report
 allure-results
+/test-results/
+/playwright-report/
+/playwright/.cache/
