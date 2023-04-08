@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wdio run configs/wdio.conf.js",
+    "wdio": "wdio run configs/wdio.conf.js",
     "clean": "rimraf ./node_modules allure-report allure-results",
-    "allure": "npx allure generate --clean allure-results && npx allure open"
+    "allure": "npx allure generate --clean allure-results && npx allure open",
+    "test": "npx playwright test",
+    "report": "npx playwright show-report"
   },
   "keywords": [],
   "author": "",
