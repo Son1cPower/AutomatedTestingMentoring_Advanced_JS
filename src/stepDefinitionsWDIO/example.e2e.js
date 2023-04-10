@@ -45,3 +45,14 @@ describe('My Login application - 4', () => {
             'You logged into a secure area!')
     })
 })
+
+describe('My Login application - 5', () => {
+    it('should login with valid credentials', async () => {
+        await LoginPage.open()
+
+        await LoginPage.login('tomsmith', 'SuperSecretPassword!')
+        await expect(SecurePage.flashAlert).toBeExisting()
+        await expect(SecurePage.flashAlert).toHaveTextContaining(
+            'You logged into a secure area!')
+    })
+})
