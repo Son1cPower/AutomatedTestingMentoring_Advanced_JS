@@ -9,7 +9,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv(installationName: 'sq1') {
-                    sh "sonar-scanner -Dsonar.host.url=http://localhost:9001"
+                    sh "sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner"
                 }
             }
         }
