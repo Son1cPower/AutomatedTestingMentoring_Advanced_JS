@@ -1,17 +1,15 @@
 pipeline {
-    agent any
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'HW3', url: 'https://github.com/Son1cPower/AutomatedTestingMentoring_Advanced_JS.git'
-            }
+  agent { label 'linux' }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5'))
+  }
+  stages {
+    stage('Scan') {
+      steps {
+        withSonarQubeEnv(installationName: 'sq1') { 
+          sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
         }
-        stage('SonarQube analysis') {
-            steps {
-                withSonarQubeEnv(installationName: 'sq1') {
-                    sh "sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner"
-                }
-            }
-        }
+      }
     }
+  }
 }
