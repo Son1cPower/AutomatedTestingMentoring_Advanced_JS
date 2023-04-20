@@ -1,7 +1,6 @@
-import logger from '../../../configs/logger.config';
+import logger from '../../utils/loggers/logger.config';
 
-
-logger.info("START - login.page.ts");
+logger.info("START - login.page.js");
 
 const BaseComponent = require('../components/baseComponent');
 
