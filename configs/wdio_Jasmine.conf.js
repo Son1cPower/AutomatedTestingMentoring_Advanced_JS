@@ -24,7 +24,7 @@ exports.config = {
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
     //
-    specs: ['../src/tests/wdio/*.js'],
+    specs: ['../src/stepDefinitions/*.js'],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -64,7 +64,7 @@ exports.config = {
             args: [
                 '--no-sandbox',
                 '--disable-infobars',
-                // '--headless',
+                '--headless',
                 '--disable-gpu',
                 '--window-size=1440,735'
             ],
@@ -129,7 +129,7 @@ exports.config = {
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
-    framework: 'mocha',
+    framework: 'Jasmine',
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
