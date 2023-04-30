@@ -19,9 +19,24 @@ describe('Open and check all Launches', () => {
 
         //await browser.pause(2000);
 
-
+        const expectedTotalLaunches = 5
         logger.info(`Start - launches.page.js`)
-        await expect(await LaunchesPage.getTotalCountOfSelectors(LaunchesPage.getAllLaunches)).toEqual(5)
+        await expect(await LaunchesPage.getTotalCountOfSelectors(await LaunchesPage.getAllLaunches)).toEqual(expectedTotalLaunches)
+
+        const expectedLaunchesIDs = ['10', '6', '7', '8', '9',];
+        await expect(await LaunchesPage.getArrayOfLaunchesIDs(await LaunchesPage.getAllLaunches)).toEqual(expectedLaunchesIDs)
+
+
+
+
+
+
+
+
+
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
 
     })
 

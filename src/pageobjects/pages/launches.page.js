@@ -27,7 +27,13 @@ class LaunchesPage extends BaseComponent {
     }
 
 
-
+    async getArrayOfLaunchesIDs(arrayOfSelectors) {
+        const array = [];
+        for (const selectors of arrayOfSelectors) {
+            array.push(await selectors.getAttribute('data-id'));
+        }
+        return array.sort();
+    }
 
 
 
