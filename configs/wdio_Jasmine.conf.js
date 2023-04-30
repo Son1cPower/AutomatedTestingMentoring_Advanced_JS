@@ -64,7 +64,7 @@ exports.config = {
             args: [
                 '--no-sandbox',
                 '--disable-infobars',
-                '--headless',
+                // '--headless',
                 '--disable-gpu',
                 '--window-size=1440,735'
             ],
@@ -121,7 +121,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver', 'vscode', 'reportportal'],
+    services: ['chromedriver', 'geckodriver', 'vscode', 'reportportal'],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -129,7 +129,7 @@ exports.config = {
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
-    framework: 'Jasmine',
+    framework: 'jasmine',
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,

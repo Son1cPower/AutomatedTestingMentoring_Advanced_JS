@@ -1,7 +1,19 @@
 {
   "plugins": ["wdio"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:wdio/recommended"
-  ]
+  "extends": ["airbnb","eslint:recommended", "plugin:wdio/recommended"],
+  "env": {
+      "browser": true,
+      "node": true,
+      "es6": true,
+      "jquery": true
+  },
+  "rules": {
+      "arrow-body-style": ["error", "always"],
+      "padded-blocks": 0,
+      "one-var": 0,
+      "indent" : ["error", 4],
+      "max-len": ["error", { "code": 120 }],
+      "no-inner-declarations": 0
+  }
+
 }
