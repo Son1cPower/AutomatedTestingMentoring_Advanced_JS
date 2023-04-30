@@ -1,7 +1,5 @@
 import logger from '../../utils/loggers/logger.config';
 
-// logger.info("START - sideBar.js");
-
 
 const BaseComponent = require('../components/baseComponent');
 

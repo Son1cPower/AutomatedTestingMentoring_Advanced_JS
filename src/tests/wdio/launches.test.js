@@ -1,8 +1,6 @@
-
 const LoginPage = require('../../pageobjects/pages/login.page')
 const SideBar = require('../../pageobjects/components/sideBar')
-const SecurePage = require('../../pageobjects/pages/secure.page')
-
+const LaunchesPage = require('../../pageobjects/pages/launches.page')
 import logger from '../../utils/loggers/logger.config'
 
 describe('Open and check all Launches', () => {
@@ -19,12 +17,16 @@ describe('Open and check all Launches', () => {
         logger.info(`Open launches.page.js`)
         await SideBar.launches.click()
 
+        //await browser.pause(2000);
 
-        await browser.pause(2000);
+
+        logger.info(`Start - launches.page.js`)
+        await expect(await LaunchesPage.getTotalCountOfSelectors(LaunchesPage.getAllLaunches)).toEqual(5)
+
     })
 
 
-    // it('Select project by title', async () => {
+    // it('total launches', async () => {
     //     await SideBar.selectProjectByTitle('project_js')
     //     await SideBar.launches.click()
 

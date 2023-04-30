@@ -1,7 +1,4 @@
 import logger from '../../utils/loggers/logger.config';
-
-// logger.info("START - login.page.js");
-
 const BaseComponent = require('../components/baseComponent');
 
 

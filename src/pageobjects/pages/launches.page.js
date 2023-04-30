@@ -1,5 +1,5 @@
 import logger from '../../utils/loggers/logger.config';
-
+const { SideBar } = require('../components');
 
 
 const BaseComponent = require('../components/baseComponent');
@@ -7,28 +7,37 @@ const BaseComponent = require('../components/baseComponent');
 
 class LaunchesPage extends BaseComponent {
 
+    constructor() {
+        const launchesTable = ".grid__grid--utIJA"
+        logger.info(`Get element sideBar with selector ${launchesTable}`)
+        super(launchesTable);
+        // this.sideBar = new SideBar();
+    }
 
-    // get showPage() {
-    //     logger.info("START - Launches.page.js");
+    get btnRefresh() {
+        const btnRefresh = "div[class='actionPanel__action-button--3hEFC'] button[type='button']"
+        logger.info(`Get element userName with selector ${btnRefresh}`)
+        return $(btnRefresh);
+    }
+
+    get getAllLaunches() {
+        const getAllLaunches = '.gridRow__grid-row-wrapper--1dI9K';
+        logger.info(`Get element Launches with selector ${getAllLaunches}`);
+        return this.rootEl.$$(getAllLaunches);
+    }
+
+
+
+
+
+
+
+
+    // async login(username, password) {
+    //     await this.inputUsername.setValue(username);
+    //     await this.inputPassword.setValue(password);
+    //     await this.btnLogin.click();
     // }
-
-    // showPage()
-
-    get inputUsername() {
-        const userName = "input[placeholder='Login']"
-        logger.info(`Get element userName with selector ${userName}`)
-        return $(userName);
-    }
-
-
-
-
-
-    async login(username, password) {
-        await this.inputUsername.setValue(username);
-        await this.inputPassword.setValue(password);
-        await this.btnLogin.click();
-    }
 
 
 

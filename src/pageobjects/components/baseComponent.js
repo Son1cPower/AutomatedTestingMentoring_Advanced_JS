@@ -19,4 +19,11 @@ module.exports = class BaseComponent {
         return $(this.rootSelector);
     }
 
+
+    async getTotalCountOfSelectors(arrayOfSelectors) {
+        return arrayOfSelectors.length
+    }
+
+
+
 }
