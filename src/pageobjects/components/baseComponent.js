@@ -20,6 +20,6 @@ module.exports = class BaseComponent {
   }
 
   async getTotalCountOfSelectors(arrayOfSelectors) {
-    return arrayOfSelectors.length;
+    return await arrayOfSelectors.length;
   }
 };

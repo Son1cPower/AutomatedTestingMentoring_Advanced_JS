@@ -35,7 +35,7 @@ class LaunchesPage extends BaseComponent {
   async getLauncheByID(id) {
     const LaunchesByID = `.gridRow__grid-row-wrapper--1dI9K[data-id="${id}"]`;
     logger.info(`Get element Launches with selector ${LaunchesByID}`);
-    return this.rootEl.$(LaunchesByID);
+    return await this.rootEl.$(LaunchesByID);
   }
 
   get getProductBugForLaunche() {
