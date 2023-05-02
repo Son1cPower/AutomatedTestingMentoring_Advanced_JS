@@ -21,6 +21,7 @@ class LoginPage extends BaseComponent {
   }
 
   async login(username, password) {
+    await this.open();
     await this.inputUsername.setValue(username);
     await this.inputPassword.setValue(password);
     await this.btnLogin.click();

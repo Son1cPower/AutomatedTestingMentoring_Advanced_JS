@@ -2,12 +2,12 @@ const LoginPage = require('../../pageobjects/pages/login.page');
 const SideBar = require('../../pageobjects/components/sideBar');
 const LaunchesPage = require('../../pageobjects/pages/launches.page');
 import logger from '../../utils/loggers/logger.config';
+const { LOGIN: login, PASSWORD: password } = require('dotenv').config().parsed;
 
 describe('Open and check all Launches', () => {
   before('Login with credentials', async () => {
     logger.info(`Start - login.page.js`);
-    await LoginPage.open();
-    await LoginPage.login('superadmin', 'erebus');
+    await LoginPage.login(login, password);
   });
 
   beforeEach('Select project by title', async () => {
