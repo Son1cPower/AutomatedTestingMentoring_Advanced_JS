@@ -19,7 +19,7 @@ describe('Open and check all Launches', () => {
 
 
 
-  it('Ckeck exist Launche by ID', async () => {
+  it('Ckeck Product bug for Launche ID', async () => {
     const idLaunche = '7'
     await expect(await LaunchesPage.getLauncheByID(7)).toExist()
     //await expect(await LaunchesPage.getLauncheByID(7).$('.launchSuiteGrid__pb-col---Q-5f.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr')).toHaveText('1')
