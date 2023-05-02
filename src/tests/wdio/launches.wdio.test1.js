@@ -21,6 +21,7 @@ describe('Open and check all Launches', () => {
   it('Ckeck total count of Launches', async () => {
     const expectedTotalLaunches = 5;
     logger.info('Start - launches.page.js');
-    await expect(await LaunchesPage.getTotalCountOfSelectors(await LaunchesPage.getAllLaunches)).toEqual(expectedTotalLaunches);
+    await expect(await LaunchesPage.getTotalCountOfSelectors(await LaunchesPage.getAllLaunches)).toEqual(
+      expectedTotalLaunches);
   });
 });

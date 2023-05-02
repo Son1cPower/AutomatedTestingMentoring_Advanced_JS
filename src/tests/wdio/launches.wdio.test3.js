@@ -24,6 +24,6 @@ describe('Open and check all Launches', () => {
     //await expect(await LaunchesPage.getLauncheByID(7).$('.launchSuiteGrid__pb-col---Q-5f.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr')).toHaveText('1')
     //await expect(await LaunchesPage.getLauncheByID(7).LaunchesPage.getProductBugForLaunche).toHaveText('1')
 
-    await expect(await $('.grid__grid--utIJA .gridRow__grid-row-wrapper--1dI9K[data-id="7"] .launchSuiteGrid__pb-col---Q-5f.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr')).toHaveText('1')
+    await expect(await $('.grid__grid--utIJA .gridRow__grid-row-wrapper--1dI9K[data-id="7"] .launchSuiteGrid__pb-col---Q-5f.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr')).toHaveText('1');
   });
 });

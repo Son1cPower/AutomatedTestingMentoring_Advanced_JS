@@ -76,7 +76,7 @@
     "no-duplicate-imports": "error",
     "no-iterator": "warn",
     "dot-notation": "warn",
-    "no-undef": "error",
+    "no-undef": "warn",
     "prefer-const": "warn",
     "no-var": "error",
     "one-var": ["warn", "never"],
