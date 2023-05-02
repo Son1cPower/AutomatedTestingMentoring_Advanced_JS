@@ -32,10 +32,10 @@ class LaunchesPage extends BaseComponent {
   }
 
 
-  async getLauncheByID(id) {
-    const LaunchesByID = `.gridRow__grid-row-wrapper--1dI9K[data-id="${id}"]`;
-    logger.info(`Get element Launches with selector ${LaunchesByID}`);
-    return await this.rootEl.$(LaunchesByID);
+  async getLaunchesByID(id) {
+    const getLaunchesByID = `.gridRow__grid-row-wrapper--1dI9K[data-id="${id}"]`;
+    logger.info(`Get element Launches with selector ${getLaunchesByID}`);
+    return await this.rootEl.$(getLaunchesByID);
   }
 
   get getProductBugForLaunche() {
@@ -43,7 +43,6 @@ class LaunchesPage extends BaseComponent {
     logger.info(`Get element Launches with selector ${getProductBugForLaunche}`);
     return this.$(getProductBugForLaunche);
   }
-
 }
 
 module.exports = new LaunchesPage();
