@@ -1,21 +1,18 @@
-import log4js from './log4js/logger'
-import winston from './winston/logger'
+import log4js from './log4js/logger';
+import winston from './winston/logger';
 
-import dotenv from 'dotenv'
-let logger = log4js
+import dotenv from 'dotenv';
+let logger = log4js;
 
-dotenv.config()
+dotenv.config();
 const loggerType = process.env.LOGGER;
 
-if (loggerType == 'log4js') {
-    logger = log4js
-}
-else if (loggerType == 'winston') {
-    logger = winston
-}
-else {
-    console.error(`Invalid logger type: [${loggerType}]. It can be log4js or winston`)
+if (loggerType === 'log4js') {
+  logger = log4js;
+} else if (loggerType === 'winston') {
+  logger = winston;
+} else {
+  console.error(`Invalid logger type: [${loggerType}]. It can be log4js or winston`);
 }
 
-
-export default logger
+export default logger;
