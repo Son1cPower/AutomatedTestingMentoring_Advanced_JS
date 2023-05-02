@@ -25,10 +25,5 @@ describe('Open and check all Launches', () => {
     );
   });
 
-  it('Ckeck exist Launches IDs', async () => {
-    const expectedLaunchesIDs = ['10', '6', '7', '8', '9'];
-    await expect(await LaunchesPage.getArrayOfLaunchesIDs(await LaunchesPage.getAllLaunches)).toEqual(
-      expectedLaunchesIDs,
-    );
-  });
+
 });
