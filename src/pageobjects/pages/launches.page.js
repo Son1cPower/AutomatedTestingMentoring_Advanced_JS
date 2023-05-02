@@ -31,11 +31,19 @@ class LaunchesPage extends BaseComponent {
     return array.sort();
   }
 
-  // async login(username, password) {
-  //     await this.inputUsername.setValue(username);
-  //     await this.inputPassword.setValue(password);
-  //     await this.btnLogin.click();
-  // }
+
+  async getLauncheByID(id) {
+    const LaunchesByID = `.gridRow__grid-row-wrapper--1dI9K[data-id="${id}"]`;
+    logger.info(`Get element Launches with selector ${LaunchesByID}`);
+    return this.rootEl.$(LaunchesByID);
+  }
+
+  get getProductBugForLaunche() {
+    const getProductBugForLaunche = '.launchSuiteGrid__pb-col---Q-5f.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
+    logger.info(`Get element Launches with selector ${getProductBugForLaunche}`);
+    return this.$(getProductBugForLaunche);
+  }
+
 }
 
 module.exports = new LaunchesPage();
