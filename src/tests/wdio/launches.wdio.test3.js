@@ -16,7 +16,6 @@ describe('Open and check all Launches', () => {
   });
 
   it('Ckeck Product bug for Launche ID', async () => {
-    const idLaunches = '7';
     await expect(await page('launches').launchesByID(7).countOfProductBug).toHaveText('1');
   });
 });
