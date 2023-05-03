@@ -1,7 +1,8 @@
 {
   "plugins": [
     "wdio",
-    "prettier"
+    "prettier",
+    "mocha"
   ],
   "env": {
     "browser": true,
@@ -11,7 +12,9 @@
   "extends": [
     "eslint:recommended",
     "plugin:wdio/recommended",
-    "prettier"
+    "prettier",
+    "airbnb-base",
+    "plugin:mocha/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -26,6 +29,11 @@
     }
   },
   "rules": {
+    "wdio/no-pause": "off",
+    "mocha/no-mocha-arrows": "off",
+    "class-methods-use-this": "off",
+    "func-names": "off",
+    "no-shadow": "off",
     "function-call-argument-newline": ["error", "consistent"],
     "space-in-parens": ["error", "never"],
     "template-curly-spacing": ["error", "never"],
@@ -155,5 +163,13 @@
     "no-whitespace-before-property": 2,
     "one-var-declaration-per-line": 2,
     "prefer-rest-params": 2
-  }
+  },
+  "ignorePatterns": [
+    "**/coverage",
+    "**/mochawesome-report",
+    "**/artifacts",
+    "**/report",
+    "**/allure-report",
+    "**/allure-results"
+  ]
 }
