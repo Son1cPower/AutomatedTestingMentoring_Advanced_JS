@@ -2,22 +2,29 @@ import logger from '../../utils/loggers/logger.config';
 const BaseComponent = require('../components/baseComponent');
 
 class LoginPage extends BaseComponent {
+  constructor() {
+    const loginBlock = '.pageBlockContainer__page-block-container--2K6rq';
+    logger.info(`Get element loginBlock with selector ${loginBlock}`);
+    super(loginBlock);
+  }
+
+
   get inputUsername() {
     const userName = "input[placeholder='Login']";
     logger.info(`Get element userName with selector ${userName}`);
-    return $(userName);
+    return this.rootEl.$(userName);
   }
 
   get inputPassword() {
     const inputPassword = "input[placeholder='Password']";
     logger.info(`Get element inputPassword with selector ${inputPassword}`);
-    return $(inputPassword);
+    return this.rootEl.$(inputPassword);
   }
 
   get btnLogin() {
     const btnLogin = "button[type='submit']";
     logger.info(`Get element btnLogin with selector ${btnLogin}`);
-    return $(btnLogin);
+    return this.rootEl.$(btnLogin);
   }
 
   async login(username, password) {
@@ -30,7 +37,7 @@ class LoginPage extends BaseComponent {
   get btnLoginWithEPAM() {
     const btnLoginWithEPAM = "button[type='button']";
     logger.info(`Get element btnLoginWithEPAM with selector ${btnLoginWithEPAM}`);
-    return $(btnLoginWithEPAM);
+    return this.rootEl.$(btnLoginWithEPAM);
   }
 
   async loginWithEPAM() {
@@ -42,4 +49,4 @@ class LoginPage extends BaseComponent {
   }
 }
 
-module.exports = new LoginPage();
+module.exports = LoginPage;

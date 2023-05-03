@@ -1,9 +1,21 @@
-// const LaunchesPage = require('./launches.page')
-// const LoginPage = require('./login.pagee')
-// const SecurePage = require('./secure.page')
+/* eslint-disable indent */
+const LaunchesPage = require('./launches.page');
+const LoginPage = require('./login.page');
 
-// module.exports = {
-//   LoginPage,
-//   LaunchesPage,
-//   SecurePage,
-// };
+/**
+ * @param name {'login' | 'launches'}
+ * @returns {LoginPage|LaunchesPage}
+ */
+function page(name) {
+    const items = {
+        login: new LoginPage(),
+        launches: new LaunchesPage(),
+    };
+    return items[name.toLowerCase()];
+}
+
+module.exports = {
+    page,
+    LoginPage,
+    LaunchesPage,
+};

@@ -26,4 +26,4 @@ class SideBar extends BaseComponent {
   }
 }
 
-module.exports = new SideBar();
+module.exports = SideBar;

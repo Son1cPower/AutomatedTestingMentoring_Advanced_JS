@@ -1,27 +1,24 @@
-const LoginPage = require('../../pageobjects/pages/login.page');
-const SideBar = require('../../pageobjects/components/sideBar');
-const LaunchesPage = require('../../pageobjects/pages/launches.page');
 import logger from '../../utils/loggers/logger.config';
 const { LOGIN: login, PASSWORD: password } = require('dotenv').config().parsed;
-
+const { page } = require('../../pageobjects');
 
 describe('Open and check all Launches', () => {
   before('Login with credentials', async () => {
     logger.info('Start - login.page.js');
-    await LoginPage.login(login, password);
+    await page('login').login(login, password);
   });
 
   beforeEach('Select project by title', async () => {
     logger.info('Start - sideBar.js');
-    await SideBar.selectProjectByTitle('stanislav_nehrii_personal');
+    await page('launches').sideBar.selectProjectByTitle('stanislav_nehrii_personal');
     logger.info('Open launches.page.js');
-    await SideBar.launches.click();
+    await page('launches').sideBar.launches.click();
   });
 
   it('Ckeck total count of Launches', async () => {
     const expectedTotalLaunches = 5;
     logger.info('Start - launches.page.js');
-    await expect(await LaunchesPage.getTotalCountOfSelectors(await LaunchesPage.getAllLaunches)).toEqual(
+    await expect(await page('launches').getTotalCountOfSelectors(await page('launches').getAllLaunches)).toEqual(
       expectedTotalLaunches);
   });
 });

@@ -1,5 +1,6 @@
-// const pages = require('./pages');
+/* eslint-disable indent */
+const pages = require('./pages');
 
-// module.exports = {
-//   ...pages,
-// };
+module.exports = {
+    ...pages,
+};

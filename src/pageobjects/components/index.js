@@ -1,5 +1,8 @@
-// const SideBar = require('./sideBar')
+/* eslint-disable indent */
+const SideBar = require('./sideBar');
+const LaunchesByID = require('./launches/launchesByID.component');
 
-// module.exports = {
-//   SideBar
-// };
+module.exports = {
+    SideBar,
+    LaunchesByID,
+};
