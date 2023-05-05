@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "wdio": "wdio run configs/wdio.conf.js",
+    "wdio": "wdio run configs/wdio.shared.conf.js",
     "wdio_j": "wdio run configs/wdio_jasmine.conf.js",
     "clean": "rimraf ./node_modules allure-report allure-results",
     "allure": "npx allure generate --clean allure-results && npx allure open",
@@ -60,3 +60,4 @@
     "winston": "^3.8.2"
   }
 }
+

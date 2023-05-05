@@ -1,6 +1,7 @@
 const allure = require('allure-commandline');
 
 exports.config = {
+
   //
   // ====================
   // Runner Configuration
@@ -213,6 +214,7 @@ exports.config = {
    * @param {Object}         browser      instance of created browser/device session
    */
   // before: function (capabilities, specs) {
+
   // },
   /**
    * Runs before a WebdriverIO command gets executed.

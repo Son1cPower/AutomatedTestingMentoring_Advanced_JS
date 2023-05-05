@@ -1,5 +1,6 @@
 import logger from '../../utils/loggers/logger.config';
 const BaseComponent = require('../components/baseComponent');
+const conf = require('../../../configs/conf')
 
 class LoginPage extends BaseComponent {
   constructor() {
@@ -45,7 +46,8 @@ class LoginPage extends BaseComponent {
   }
 
   open() {
-    return super.open('http://localhost:8080/ui/#login');
+    let url = conf.default.url;
+    return super.open(url);
   }
 }
 

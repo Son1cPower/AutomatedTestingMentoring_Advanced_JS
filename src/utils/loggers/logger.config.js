@@ -1,14 +1,9 @@
 import log4js from './log4js/logger';
 import winston from './winston/logger';
+const conf = require('../../../configs/conf')
 
-const { LOGGER: loggerType } = require('dotenv').config().parsed;
-
-
-//import dotenv from 'dotenv';
+let loggerType = conf.default.LOGGER
 let logger = log4js;
-
-//dotenv.config();
-//const loggerType = process.env.LOGGER;
 
 if (loggerType === 'log4js') {
   logger = log4js;

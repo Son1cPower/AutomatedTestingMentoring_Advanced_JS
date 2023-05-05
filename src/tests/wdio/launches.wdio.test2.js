@@ -1,20 +1,18 @@
 const { page } = require('../../pageobjects');
-import logger from '../../utils/loggers/logger.config';
-const { LOGIN: login, PASSWORD: password } = require('dotenv').config().parsed;
+const conf = require('../../../configs/conf')
 
 describe('Open and check all Launches', () => {
   before('Login with credentials', async () => {
-    logger.info('Start - login.page.js');
+    const login = conf.default.LOGIN
+    const password = conf.default.PASSWORD
     await page('login').login(login, password);
   });
 
   beforeEach('Select project by title', async () => {
-    logger.info('Start - sideBar.js');
-    await page('launches').sideBar.selectProjectByTitle('stanislav_nehrii_personal');
-    logger.info('Open launches.page.js');
-    await page('launches').sideBar.launches.click();
+    const sideBar = page('launches').sideBar
+    await sideBar.selectProjectByTitle('stanislav_nehrii_personal');
+    await sideBar.launches.click();
   });
-
 
   it('Ckeck exist Launches IDs', async () => {
     const expectedLaunchesIDs = ['10', '6', '7', '8', '9'];

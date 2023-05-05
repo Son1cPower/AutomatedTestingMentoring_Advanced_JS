@@ -4,8 +4,9 @@
             "node",
             "@wdio/globals/types",
             "@wdio/mocha-framework",
-            "@wdio/jasmine-framework"
-        ]
+            "@wdio/jasmine-framework",
+            "expect-webdriverio",
+                   ]
     },
     "exclude": ["node_modules"]
 }

@@ -2,6 +2,7 @@ import logger from '../../utils/loggers/logger.config';
 const { LaunchesByID, SideBar } = require('../components');
 const BaseComponent = require('../components/baseComponent');
 
+
 class LaunchesPage extends BaseComponent {
   constructor() {
     const launchesTable = '.grid__grid--utIJA';
