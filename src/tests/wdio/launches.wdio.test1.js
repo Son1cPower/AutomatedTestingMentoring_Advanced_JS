@@ -1,7 +1,6 @@
 const { page } = require('../../pageobjects');
 const conf = require('../../../configs/conf')
 
-
 describe('Open and check all Launches', () => {
   before('Login with credentials', async () => {
     const login = conf.default.LOGIN
