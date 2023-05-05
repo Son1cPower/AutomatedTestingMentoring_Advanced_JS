@@ -1,5 +1,4 @@
 require('dotenv').config().parsed;
-
 let data = undefined;
 let environmentUrl;
 let urls = {
@@ -32,5 +31,4 @@ if (process.env.ENVIRONMENT === 'epam') {
     PASSWORD: process.env.PASSWORD_LOCAL,
   };
 }
-
 export default data;
