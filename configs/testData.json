@@ -1,0 +1,14 @@
+[
+  { "launchesID": "6", "total": "10", "automationBug": "1", "systemIssue": "8", "toInvestigate": "5" },
+  {
+    "launchesID": "7",
+    "total": "15",
+    "productBug": "1",
+    "automationBug": "5",
+    "systemIssue": "4",
+    "toInvestigate": "8"
+  },
+  { "launchesID": "8", "total": "20", "productBug": "4", "automationBug": "4", "toInvestigate": "10" },
+  { "launchesID": "9", "total": "25", "productBug": "4", "automationBug": "1", "toInvestigate": "2" },
+  { "launchesID": "10", "total": "30" }
+]

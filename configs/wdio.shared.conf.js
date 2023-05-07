@@ -25,7 +25,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['../src/tests/wdio/*.js'],
+  specs: ['../src/tests/wdio/*.test3.js'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -67,7 +67,7 @@ exports.config = {
           '--disable-infobars',
           // '--headless',
           '--disable-gpu',
-          '--window-size=1440,735',
+          '--window-size=1600,900',
         ],
       },
       // If outputDir is provided WebdriverIO can capture driver session logs

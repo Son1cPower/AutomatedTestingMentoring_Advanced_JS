@@ -10,11 +10,35 @@ class LaunchesByIDcomponent extends BaseComponent {
     }
 
 
-    get countOfProductBug() {
-        const countOfProductBug = '.launchSuiteGrid__pb-col---Q-5f.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
-        logger.info(`Get element Launches with selector ${countOfProductBug}`);
-        return this.rootEl.$(countOfProductBug);
+    get getCountOfProductBug() {
+        const getCountOfProductBug = '.launchSuiteGrid__pb-col---Q-5f.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
+        logger.info(`Get element getCountOfProductBug with selector ${getCountOfProductBug}`);
+        return this.rootEl.$(getCountOfProductBug);
     }
+    get getCountOfAutomationBug() {
+        const getCountOfAutomationBug = '.launchSuiteGrid__ab-col--1e3O7.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
+        logger.info(`Get element getCountOfAutomationBug with selector ${getCountOfAutomationBug}`);
+        return this.rootEl.$(getCountOfAutomationBug);
+    }
+
+    get getCountOfSystemIssue() {
+        const getCountOfSystemIssue = '.launchSuiteGrid__si-col--1selD.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
+        logger.info(`Get element getCountOfSystemIssue with selector ${getCountOfSystemIssue}`);
+        return this.rootEl.$(getCountOfSystemIssue);
+    }
+
+    get getCountOfToInvestigate() {
+        const getCountOfToInvestigate = '.launchSuiteGrid__ti-col--33O72.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
+        logger.info(`Get element getCountOfToInvestigate with selector ${getCountOfToInvestigate}`);
+        return this.rootEl.$(getCountOfToInvestigate);
+    }
+
+    get getTotalBugs() {
+        const getTotalBugs = '.launchSuiteGrid__total-col--1zT8z.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
+        logger.info(`Get element getTotalBugs with selector ${getTotalBugs}`);
+        return this.rootEl.$(getTotalBugs);
+    }
+
 }
 
 module.exports = LaunchesByIDcomponent;
