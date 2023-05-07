@@ -4,15 +4,6 @@ const testData = require('../../../configs/testData.json');
 
 describe('Open and check all Launches', () => {
 
-
-  // const testData = [
-  //   { launchesID: '6', total: '10', automationBug: '1', systemIssue: '8', toInvestigate: '5' },
-  //   { launchesID: '7', total: '15', productBug: '1', automationBug: '5', systemIssue: '4', toInvestigate: '8' },
-  //   { launchesID: '8', total: '20', productBug: '4', automationBug: '4', toInvestigate: '10' },
-  //   { launchesID: '9', total: '25', productBug: '4', automationBug: '1', toInvestigate: '2' },
-  //   { launchesID: '10', total: '30' }
-  // ];
-
   before('Login with credentials', async () => {
     const login = conf.default.LOGIN
     const password = conf.default.PASSWORD
@@ -28,8 +19,23 @@ describe('Open and check all Launches', () => {
   testData.forEach((data) => {
 
     if (data.total) {
-      it(`Ckeck Total bugs for Launche ID:${data.launchesID}`, async () => {
-        await expect(await page('launches').launchesByID(data.launchesID).getTotalBugs).toHaveText(data.total);
+      it(`Ckeck Passed tests for Launche ID:${data.launchesID}`, async () => {
+        await expect(await page('launches').launchesByID(data.launchesID).getTotalTests).toHaveText(data.total);
+      });
+    }
+    if (data.passed) {
+      it(`Ckeck Passed tests for Launche ID:${data.launchesID}`, async () => {
+        await expect(await page('launches').launchesByID(data.launchesID).getPassedTests).toHaveText(data.passed);
+      });
+    }
+    if (data.failed) {
+      it(`Ckeck Failed tests for Launche ID:${data.launchesID}`, async () => {
+        await expect(await page('launches').launchesByID(data.launchesID).getFailedTests).toHaveText(data.failed);
+      });
+    }
+    if (data.skipped) {
+      it(`Ckeck Skipped tests for Launche ID:${data.launchesID}`, async () => {
+        await expect(await page('launches').launchesByID(data.launchesID).getSkippedTests).toHaveText(data.skipped);
       });
     }
     if (data.productBug) {

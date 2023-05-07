@@ -18,7 +18,7 @@ exports.config = {
             '--disable-infobars',
             // '--headless',
             '--disable-gpu',
-            '--window-size=1440,735',
+            '--window-size=1600,900',
           ],
         },
 

@@ -10,6 +10,26 @@ class LaunchesByIDcomponent extends BaseComponent {
     }
 
 
+    get getTotalTests() {
+        const getTotalTests = '.launchSuiteGrid__total-col--1zT8z.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
+        logger.info(`Get element getTotalTests with selector ${getTotalTests}`);
+        return this.rootEl.$(getTotalTests);
+    }
+    get getPassedTests() {
+        const getPassedTests = '.launchSuiteGrid__passed-col--2EZNC.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
+        logger.info(`Get element getTotalBugs with selector ${getPassedTests}`);
+        return this.rootEl.$(getPassedTests);
+    }
+    get getFailedTests() {
+        const getFailedTests = '.launchSuiteGrid__failed-col--1LKOb.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
+        logger.info(`Get element getTotalBugs with selector ${getFailedTests}`);
+        return this.rootEl.$(getFailedTests);
+    }
+    get getSkippedTests() {
+        const getSkippedTests = '.launchSuiteGrid__skipped-col--1zvap.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
+        logger.info(`Get element getTotalBugs with selector ${getSkippedTests}`);
+        return this.rootEl.$(getSkippedTests);
+    }
     get getCountOfProductBug() {
         const getCountOfProductBug = '.launchSuiteGrid__pb-col---Q-5f.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
         logger.info(`Get element getCountOfProductBug with selector ${getCountOfProductBug}`);
@@ -33,11 +53,7 @@ class LaunchesByIDcomponent extends BaseComponent {
         return this.rootEl.$(getCountOfToInvestigate);
     }
 
-    get getTotalBugs() {
-        const getTotalBugs = '.launchSuiteGrid__total-col--1zT8z.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
-        logger.info(`Get element getTotalBugs with selector ${getTotalBugs}`);
-        return this.rootEl.$(getTotalBugs);
-    }
+
 
 }
 
