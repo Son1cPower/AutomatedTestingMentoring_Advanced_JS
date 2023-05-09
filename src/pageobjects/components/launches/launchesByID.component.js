@@ -7,8 +7,19 @@ class LaunchesByIDcomponent extends BaseComponent {
         const launchesByID = `.gridRow__grid-row-wrapper--1dI9K[data-id="${id}"]`;
         logger.info(`Get element launchesByID with selector ${launchesByID}`);
         super(launchesByID);
+        this.id = id;
     }
 
+    get getTestName() {
+        const getTestName = '.gridRow__grid-row-wrapper--1dI9K[data-id="7"] td .itemInfo__main-info--2HB9g:first-child';
+        logger.info(`Get element getTestName with selector ${getTestName}`);
+        return this.rootEl.$(getTestName);
+    }
+
+    async openLaunches() {
+        let url = `http://localhost:8080/ui/#stanislav_nehrii_personal/launches/all/${this.id}`;
+        return super.open(url);
+    }
 
     get getTotalTests() {
         const getTotalTests = '.launchSuiteGrid__total-col--1zT8z.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';

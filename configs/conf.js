@@ -32,3 +32,4 @@ if (process.env.ENVIRONMENT === 'epam') {
   };
 }
 export default data;
+

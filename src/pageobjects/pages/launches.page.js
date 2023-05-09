@@ -1,5 +1,5 @@
 import logger from '../../utils/loggers/logger.config';
-const { LaunchesByID, SideBar } = require('../components');
+const { LaunchesByID, SuiteByID, SideBar } = require('../components');
 const BaseComponent = require('../components/baseComponent');
 
 
@@ -15,6 +15,9 @@ class LaunchesPage extends BaseComponent {
     return new LaunchesByID(id);
   }
 
+  suiteByID(id) {
+    return new SuiteByID(id);
+  }
 
   get btnRefresh() {
     const btnRefresh = "div[class='actionPanel__action-button--3hEFC'] button[type='button']";
