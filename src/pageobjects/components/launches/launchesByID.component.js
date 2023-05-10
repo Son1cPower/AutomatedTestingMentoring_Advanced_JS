@@ -16,13 +16,6 @@ class LaunchesByIDcomponent extends BaseComponent {
         return this.rootEl.$(getLaunchesName);
     }
 
-    async openLaunches() {
-        // let url = `http://localhost:8080/ui/#stanislav_nehrii_personal/launches/all/${this.id}`;
-        // return super.open(url);
-        const getLaunchesLink = 'td>div>div>.itemInfo__name-link--1ItPc';
-        logger.info(`Get element getLaunchesLink with selector ${getLaunchesLink}`);
-        return (await this.rootEl.$(getLaunchesLink)).click()
-    }
 
     get getTotalTests() {
         const getTotalTests = '.launchSuiteGrid__total-col--1zT8z.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
@@ -67,7 +60,12 @@ class LaunchesByIDcomponent extends BaseComponent {
         return this.rootEl.$(getCountOfToInvestigate);
     }
 
+    async openLaunches() {
 
+        const getLaunchesLink = 'td>div>div>.itemInfo__name-link--1ItPc';
+        logger.info(`Get element getLaunchesLink with selector ${getLaunchesLink}`);
+        return (await this.rootEl.$(getLaunchesLink)).click()
+    }
 
 }
 
