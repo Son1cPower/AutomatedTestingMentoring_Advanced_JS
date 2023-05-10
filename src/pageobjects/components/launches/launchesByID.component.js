@@ -10,15 +10,18 @@ class LaunchesByIDcomponent extends BaseComponent {
         this.id = id;
     }
 
-    get getTestName() {
-        const getTestName = '.gridRow__grid-row-wrapper--1dI9K[data-id="7"] td .itemInfo__main-info--2HB9g:first-child';
-        logger.info(`Get element getTestName with selector ${getTestName}`);
-        return this.rootEl.$(getTestName);
+    get getLaunchesName() {
+        const getLaunchesName = 'td .tooltip__tooltip-trigger--3Z4Hc.itemInfo__name--27fwI span';
+        logger.info(`Get element getLaunchesName with selector ${getLaunchesName}`);
+        return this.rootEl.$(getLaunchesName);
     }
 
     async openLaunches() {
-        let url = `http://localhost:8080/ui/#stanislav_nehrii_personal/launches/all/${this.id}`;
-        return super.open(url);
+        // let url = `http://localhost:8080/ui/#stanislav_nehrii_personal/launches/all/${this.id}`;
+        // return super.open(url);
+        const getLaunchesLink = 'td>div>div>.itemInfo__name-link--1ItPc';
+        logger.info(`Get element getLaunchesLink with selector ${getLaunchesLink}`);
+        return (await this.rootEl.$(getLaunchesLink)).click()
     }
 
     get getTotalTests() {

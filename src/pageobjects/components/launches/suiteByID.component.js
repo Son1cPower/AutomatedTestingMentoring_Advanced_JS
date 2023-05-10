@@ -10,7 +10,7 @@ class SuiteByIDcomponent extends BaseComponent {
     }
 
     get getSuiteName() {
-        const getSuiteName = 'span[xpath]';
+        const getSuiteName = 'td .tooltip__tooltip-trigger--3Z4Hc.itemInfo__name--27fwI span';
         logger.info(`Get element getSuiteName with selector ${getSuiteName}`);
         return this.rootEl.$(getSuiteName);
     }
@@ -32,10 +32,10 @@ class SuiteByIDcomponent extends BaseComponent {
     }
 
 
-    // get getSkippedTests() {
-    //     const getSkippedTests = '.launchSuiteGrid__skipped-col--1zvap.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
-    //     logger.info(`Get element getTotalBugs with selector ${getSkippedTests}`);
-    //     return this.rootEl.$(getSkippedTests);
+    // get getSkippedSiutes() {
+    //     const getSkippedSiutes = '.launchSuiteGrid__skipped-col--1zvap.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
+    //     logger.info(`Get element getSkippedSiutes with selector ${getSkippedSiutes}`);
+    //     return this.rootEl.$(getSkippedSiutes);
     // }
     get getCountOfSiutesProductBug() {
         const getCountOfSiutesProductBug = '.launchSuiteGrid__pb-col---Q-5f.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';

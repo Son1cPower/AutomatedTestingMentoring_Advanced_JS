@@ -12,27 +12,34 @@ describe('Open and check all Launches', () => {
     const sideBar = page('launches').sideBar
     await sideBar.selectProjectByTitle('stanislav_nehrii_personal');
     await sideBar.launches.click();
-    await page('launches').launchesByID("9").openLaunches()
+    await page('launches').launchesByID('9').openLaunches()
   });
-
-  // beforeEach('Select project by title', async () => {
-  //   const sideBar = page('launches').sideBar
-  //   await sideBar.selectProjectByTitle('stanislav_nehrii_personal');
-  //   await sideBar.launches.click();
-  //   await page('launches').launchesByID("9").openSiute(9)
-
-  // });
-
   testDataSiutes.forEach((data) => {
+    // for (const data of testDataSiutes) {
+    // beforeEach('Select project by title', async () => {
+    //   // const sideBar = page('launches').sideBar
+    //   // await sideBar.selectProjectByTitle('stanislav_nehrii_personal');
+    //   // await sideBar.launches.click();
+    //   // await page('launches').launchesByID("9").openSiute(9)
+    //   await page('launches').launchesByID(data.launchesID).openLaunches()
+    // });
+
+    // before('Select project by title', async () => {
+    //   // const sideBar = page('launches').sideBar
+    //   // await sideBar.selectProjectByTitle('stanislav_nehrii_personal');
+    //   // await sideBar.launches.click();
+    //   // await page('launches').launchesByID("9").openSiute(9)
+    //   await page('launches').launchesByID('9').openLaunches()
+    // });
 
 
 
-    // if (data.name) {
-    //   it(`Ckeck Passed tests for Launche ID:${data.siuteID}`, async () => {
-    //     page('launches').launchesByID(data.launchesID).getTestName.click()
-    //     // await expect(await page('launches').suiteByID(data.siuteID).getSuiteName).toHaveText(data.name);
-    //   });
-    //}
+
+    if (data.name) {
+      it(`Ckeck Name for Siute ID:${data.siuteID}`, async () => {
+        await expect(await page('launches').suiteByID(data.siuteID).getSuiteName).toHaveText(data.name);
+      });
+    }
     if (data.total) {
       it(`Ckeck Total tests for Siute ID:${data.siuteID}`, async () => {
         await expect(await page('launches').suiteByID(data.siuteID).getTotalSiutes).toHaveText(data.total);
@@ -48,6 +55,14 @@ describe('Open and check all Launches', () => {
         await expect(await page('launches').suiteByID(data.siuteID).getFailedSiutes).toHaveText(data.failed);
       });
     }
+
+
+
+    // if (data.skipped) {
+    //   it(`Ckeck Skipped tests for Siute ID:${data.siuteID}`, async () => {
+    //     await expect(await page('launches').suiteByID(data.siuteID).getSkippedSiutes).toHaveText(data.skipped);
+    //   });
+    // }
 
     if (data.productBug) {
       it(`Ckeck Product Bug for Siute ID:${data.siuteID}`, async () => {
@@ -65,7 +80,7 @@ describe('Open and check all Launches', () => {
         await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesToInvestigate).toHaveText(data.toInvestigate);
       });
     }
-
+    // }
   });
 
 

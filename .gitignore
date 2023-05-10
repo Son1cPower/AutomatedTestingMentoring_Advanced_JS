@@ -17,3 +17,4 @@ allure-results
 /test-results/
 /playwright-report/
 /playwright/.cache/
+.scannerwork

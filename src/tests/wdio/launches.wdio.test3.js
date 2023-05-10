@@ -18,6 +18,13 @@ describe('Open and check all Launches', () => {
 
   testData.forEach((data) => {
 
+
+    if (data.name) {
+      it(`Ckeck Name for Launche ID:${data.launchesID}`, async () => {
+        await expect(await page('launches').launchesByID(data.launchesID).getLaunchesName).toHaveText(data.name);
+      });
+    }
+
     if (data.total) {
       it(`Ckeck Passed tests for Launche ID:${data.launchesID}`, async () => {
         await expect(await page('launches').launchesByID(data.launchesID).getTotalTests).toHaveText(data.total);
