@@ -1,0 +1,6 @@
+projectKey=negriystas_AutomatedTestingMentoring_Advanced_JS2_AYdxbBWAvhLcorD0s8Dx
+serverUrl=http://localhost:9001
+serverVersion=10.0.0.68432
+dashboardUrl=http://localhost:9001/dashboard?id=negriystas_AutomatedTestingMentoring_Advanced_JS2_AYdxbBWAvhLcorD0s8Dx
+ceTaskId=AYdxhx74vhLcorD0s8D_
+ceTaskUrl=http://localhost:9001/api/ce/task?id=AYdxhx74vhLcorD0s8D_
