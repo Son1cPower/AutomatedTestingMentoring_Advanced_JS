@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import logger from '../../../utils/loggers/logger.config';
 const BaseComponent = require('../baseComponent');
 
