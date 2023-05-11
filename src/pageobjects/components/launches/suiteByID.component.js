@@ -8,7 +8,6 @@ class SuiteByIDcomponent extends BaseComponent {
         logger.info(`Get element suiteByID with selector ${suiteByID}`);
         super(suiteByID);
     }
-
     get getSuiteName() {
         const getSuiteName = 'td .tooltip__tooltip-trigger--3Z4Hc.itemInfo__name--27fwI span';
         logger.info(`Get element getSuiteName with selector ${getSuiteName}`);
@@ -24,19 +23,11 @@ class SuiteByIDcomponent extends BaseComponent {
         logger.info(`Get element getPassedSiutes with selector ${getPassedSiutes}`);
         return this.rootEl.$(getPassedSiutes);
     }
-
     get getFailedSiutes() {
         const getFailedSiutes = '.launchSuiteGrid__failed-col--1LKOb.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a[href]';
         logger.info(`Get element getFailedSiutes with selector ${getFailedSiutes}`);
         return this.rootEl.$(getFailedSiutes);
     }
-
-
-    // get getSkippedSiutes() {
-    //     const getSkippedSiutes = '.launchSuiteGrid__skipped-col--1zvap.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
-    //     logger.info(`Get element getSkippedSiutes with selector ${getSkippedSiutes}`);
-    //     return this.rootEl.$(getSkippedSiutes);
-    // }
     get getCountOfSiutesProductBug() {
         const getCountOfSiutesProductBug = '.launchSuiteGrid__pb-col---Q-5f.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
         logger.info(`Get element getCountOfSiutesProductBug with selector ${getCountOfSiutesProductBug}`);
@@ -47,21 +38,10 @@ class SuiteByIDcomponent extends BaseComponent {
         logger.info(`Get element getCountOfSiutesAutoBug with selector ${getCountOfSiutesAutoBug}`);
         return this.rootEl.$(getCountOfSiutesAutoBug);
     }
-
-    // get getCountOfSystemIssue() {
-    //     const getCountOfSystemIssue = '.launchSuiteGrid__si-col--1selD.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
-    //     logger.info(`Get element getCountOfSystemIssue with selector ${getCountOfSystemIssue}`);
-    //     return this.rootEl.$(getCountOfSystemIssue);
-    // }
-
     get getCountOfSiutesToInvestigate() {
         const getCountOfSiutesToInvestigate = '.launchSuiteGrid__ti-col--33O72.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
         logger.info(`Get element getCountOfSiutesToInvestigate with selector ${getCountOfSiutesToInvestigate}`);
         return this.rootEl.$(getCountOfSiutesToInvestigate);
     }
-
-
-
 }
-
 module.exports = SuiteByIDcomponent;
