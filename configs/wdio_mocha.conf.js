@@ -3,7 +3,7 @@ import { config as sharedConfig } from './wdio.shared.conf'
 exports.config = {
   ...sharedConfig, ...{
 
-    specs: ['../src/tests/jasmine/*.js'],
+    specs: ['../src/tests/wdio/*.js'],
 
     capabilities: [
       {
@@ -25,7 +25,7 @@ exports.config = {
       },
     ],
 
-    framework: 'jasmine',
+    framework: 'mocha',
 
     reporters: [
       'spec',

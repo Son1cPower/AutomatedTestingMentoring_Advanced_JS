@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "wdio": "wdio run configs/wdio.shared.conf.js",
-    "wdio_j": "wdio run configs/wdio_jasmine.conf.js",
+    "wdio:mocha": "wdio run configs/wdio_mocha.conf.js",
+    "wdio:jasmine": "wdio run configs/wdio_jasmine.conf.js",
     "clean": "rimraf ./node_modules allure-report allure-results",
     "allure": "npx allure generate --clean allure-results && npx allure open",
     "test": "npx playwright test",
