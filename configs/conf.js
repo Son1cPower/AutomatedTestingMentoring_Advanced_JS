@@ -12,6 +12,7 @@ const data = {
   url: environmentUrl,
   ENVIRONMENT: environment,
   LOGGER: process.env.LOGGER,
+  PROJECT: process.env.PROJECT,
   LOGIN: process.env.LOGIN,
   PASSWORD: process.env.PASSWORD,
 };

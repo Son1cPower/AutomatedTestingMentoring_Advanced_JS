@@ -10,11 +10,11 @@ describe('Open and check all Launches', () => {
 
   beforeEach('Select project by title', async () => {
     const sideBar = page('launches').sideBar
-    await sideBar.selectProjectByTitle('stanislav_nehrii_personal');
+    await sideBar.selectProjectByTitle(conf.default.PROJECT);
     await sideBar.launches.click();
   });
 
-  it('Ckeck total count of Launches', async () => {
+  it('Check total count of Launches', async () => {
     const expectedTotalLaunches = 5;
     await expect(await page('launches').getTotalCountOfSelectors(await page('launches').getAllLaunches)).toEqual(
       expectedTotalLaunches);

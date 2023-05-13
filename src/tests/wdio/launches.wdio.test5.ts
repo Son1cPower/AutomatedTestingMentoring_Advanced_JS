@@ -83,11 +83,11 @@ describe('Open and check all Launches', () => {
 
 
 
-  multiremote(browserInstances).it('should login', async () => {
-    await browser.loginFunc();
-    // Здесь должна быть проверка успешной авторизации
-    // ...
-  });
+  // multiremote(browserInstances).it('should login', async () => {
+  //   await browser.loginFunc();
+  //   // Здесь должна быть проверка успешной авторизации
+  //   // ...
+  // });
 });
 
 

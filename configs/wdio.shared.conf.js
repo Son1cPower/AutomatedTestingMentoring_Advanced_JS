@@ -1,4 +1,6 @@
 const allure = require('allure-commandline');
+const conf = require('./conf')
+const { page } = require('../src/pageobjects');
 
 exports.config = {
 
@@ -25,7 +27,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['../src/tests/wdio/*.test4.js'],
+  specs: ['../src/tests/wdio/*.test3.js'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -214,9 +216,9 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-  // before: function (capabilities, specs) {
-
-  // },
+  before: async function (capabilities, specs) {
+    await page('login').login(conf.default.LOGIN, conf.default.PASSWORD);
+  },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name
@@ -233,7 +235,11 @@ exports.config = {
   /**
    * Function to be executed before a test (in Mocha/Jasmine) starts.
    */
-  // beforeTest: function (test, context) {
+  // beforeTest: async function (test, context) {
+
+
+
+
   // },
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
