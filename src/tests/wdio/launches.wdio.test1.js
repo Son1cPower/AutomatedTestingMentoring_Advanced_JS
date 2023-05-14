@@ -12,7 +12,7 @@ describe('Open and check all Launches', () => {
       expectedTotalLaunches);
   });
   it('Check exist Launches IDs', async () => {
-    const expectedLaunchesIDs = ['10', '6', '7', '8', '9'];
+    const expectedLaunchesIDs = ['1', '2', '3', '4', '5'];
     await expect(await page('launches').getArrayOfLaunchesIDs(await page('launches').getAllLaunches)).toEqual(
       expectedLaunchesIDs,
     );

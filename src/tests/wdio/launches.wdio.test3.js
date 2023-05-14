@@ -1,6 +1,6 @@
 const { page } = require('../../pageobjects');
 const conf = require('../../../configs/conf')
-const testDataSiutes = require('../../../src/dto/testData-Siute_9.json');
+const testDataSiutes = require('../../../src/dto/testData-Siutes.json');
 
 describe('Open and check Suites', () => {
   before('Select and check project by title', async () => {
