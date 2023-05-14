@@ -41,5 +41,12 @@
     "failed": "3",
     "productBug": "3",
     "toInvestigate": "1"
+  },
+  {
+    "launchesID": "10",
+    "siuteID": "565",
+    "name": "Sharing tests",
+    "total": "5",
+    "passed": "5"
   }
 ]

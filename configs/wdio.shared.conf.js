@@ -27,7 +27,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['../src/tests/wdio/*.test4.js'],
+  specs: ['../src/tests/wdio/*.test1.js'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -149,11 +149,11 @@ exports.config = {
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
     'spec',
-    // ,['allure', {
-    //         outputDir: 'allure-results',
-    //         disableWebdriverStepsReporting: false,
-    //         disableWebdriverScreenshotsReporting: false,
-    //     }]
+    ['allure', {
+      outputDir: 'allure-results',
+      disableWebdriverStepsReporting: false,
+      disableWebdriverScreenshotsReporting: false,
+    }]
   ],
 
   //
@@ -218,6 +218,8 @@ exports.config = {
    */
   before: async function (capabilities, specs) {
     await page('login').login(conf.default.LOGIN, conf.default.PASSWORD);
+    await page('launches').sideBar.selectProjectByTitle(conf.default.PROJECT);
+    await page('launches').sideBar.launches.click();
   },
   /**
    * Runs before a WebdriverIO command gets executed.
