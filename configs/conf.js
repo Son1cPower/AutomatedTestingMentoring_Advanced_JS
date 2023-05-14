@@ -13,6 +13,7 @@ const data = {
   ENVIRONMENT: environment,
   LOGGER: process.env.LOGGER,
   PROJECT: process.env.PROJECT,
+  THREADS: process.env.THREADS,
   LOGIN: process.env.LOGIN,
   PASSWORD: process.env.PASSWORD,
 };
