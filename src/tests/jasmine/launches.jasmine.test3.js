@@ -1,62 +1,75 @@
 const { page } = require('../../pageobjects');
 const conf = require('../../../configs/conf')
-const testData = require('../../../configs/testData.json');
+const testDataSiutes = require('../../../src/dto/testData-Siutes.json');
 
-describe('Open and check all Launches', () => {
-  beforeAll('Login with credentials', async () => {
-    const login = conf.default.LOGIN
-    const password = conf.default.PASSWORD
-    await page('login').login(login, password);
+describe('Open and check Suites', () => {
+  beforeAll('Select and check project by title', async () => {
+    expect(await browser.getUrl()).toContain(conf.default.PROJECT + '/launches/all');
   });
 
-  beforeEach('Select project by title', async () => {
-    const sideBar = page('launches').sideBar
-    await sideBar.selectProjectByTitle('stanislav_nehrii_personal');
-    await sideBar.launches.click();
-  });
+  for (const data of testDataSiutes) {
+    describe('Open and check Suites', () => {
 
-  testData.forEach((data) => {
+      beforeAll('Chack that launches is opened', async () => {
+        const sideBar = page('launches').sideBar
+        await sideBar.launches.click();
+        await page('launches').launchesByID(data.launchesID).openLaunches()
+        expect(await browser.getUrl()).toContain(data.launchesID);
+      });
 
-    if (data.total) {
-      it(`Ckeck Passed tests for Launche ID:${data.launchesID}`, async () => {
-        await expect(await page('launches').launchesByID(data.launchesID).getTotalTests).toHaveText(data.total);
+      it(`Check Name for Siute ID:${data.siuteID}`, async () => {
+        await expect(await page('launches').suiteByID(data.siuteID).getSuiteName).toHaveText(data.name);
       });
-    }
-    if (data.passed) {
-      it(`Ckeck Passed tests for Launche ID:${data.launchesID}`, async () => {
-        await expect(await page('launches').launchesByID(data.launchesID).getPassedTests).toHaveText(data.passed);
-      });
-    }
 
-    if (data.failed) {
-      it(`Ckeck Failed tests for Launche ID:${data.launchesID}`, async () => {
-        await expect(await page('launches').launchesByID(data.launchesID).getFailedTests).toHaveText(data.failed);
+      it(`Check Total tests for Siute ID:${data.siuteID}`, async () => {
+        if (data.total) {
+          await expect(await page('launches').suiteByID(data.siuteID).getTotalSiutes).toHaveText(data.total);
+        } else
+          await expect(await page('launches').suiteByID(data.siuteID).getTotalSiutes).not.toExist()
       });
-    }
-    if (data.skipped) {
-      it(`Ckeck Skipped tests for Launche ID:${data.launchesID}`, async () => {
-        await expect(await page('launches').launchesByID(data.launchesID).getSkippedTests).toHaveText(data.skipped);
+
+      it(`Check Passed tests for Siute ID:${data.siuteID}`, async () => {
+        if (data.passed) {
+          await expect(await page('launches').suiteByID(data.siuteID).getPassedSiutes).toHaveText(data.passed);
+        } else
+          await expect(await page('launches').suiteByID(data.siuteID).getPassedSiutes).not.toExist()
       });
-    }
-    if (data.productBug) {
-      it(`Ckeck Product bugs for Launche ID:${data.launchesID}`, async () => {
-        await expect(await page('launches').launchesByID(data.launchesID).getCountOfProductBug).toHaveText(data.productBug);
+
+      it(`Check Failed tests for Siute ID:${data.siuteID}`, async () => {
+        if (data.failed) {
+          await expect(await page('launches').suiteByID(data.siuteID).getFailedSiutes).toHaveText(data.failed);
+        } else
+          await expect(await page('launches').suiteByID(data.siuteID).getFailedSiutes).not.toExist()
       });
-    }
-    if (data.automationBug) {
-      it(`Ckeck Product bugs for Launche ID:${data.launchesID}`, async () => {
-        await expect(await page('launches').launchesByID(data.launchesID).getCountOfAutomationBug).toHaveText(data.automationBug);
+
+      it(`Check Product Bug for Siute ID:${data.siuteID}`, async () => {
+        if (data.productBug) {
+          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesProductBug).toHaveText(data.productBug);
+        } else
+          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesProductBug).not.toExist()
       });
-    }
-    if (data.systemIssue) {
-      it(`Ckeck Product bugs for Launche ID:${data.launchesID}`, async () => {
-        await expect(await page('launches').launchesByID(data.launchesID).getCountOfSystemIssue).toHaveText(data.systemIssue);
+
+      it(`Check Automation Bug for Siute ID:${data.siuteID}`, async () => {
+        if (data.automationBug) {
+          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesAutoBug).toHaveText(data.automationBug);
+        } else
+          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesAutoBug).not.toExist()
       });
-    }
-    if (data.toInvestigate) {
-      it(`Ckeck Product bugs for Launche ID:${data.launchesID}`, async () => {
-        await expect(await page('launches').launchesByID(data.launchesID).getCountOfToInvestigate).toHaveText(data.toInvestigate);
+
+      it(`Check To Investigate for Siute ID:${data.siuteID}`, async () => {
+        if (data.toInvestigate) {
+          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesToInvestigate).toHaveText(data.toInvestigate);
+        } else
+          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesToInvestigate).not.toExist()
       });
-    }
-  });
+    });
+  }
 });
+
+
+
+
+
+
+
+
