@@ -2,7 +2,7 @@ const { page } = require('../../pageobjects');
 const conf = require('../../../configs/conf')
 const testDataSiutes = require('../../../src/dto/testData-Siutes.json');
 
-describe('Open and check Suites', () => {
+describe(`Open and check Suites for launchesID:${data.launchesID}`, () => {
   beforeAll('Select and check project by title', async () => {
     expect(await browser.getUrl()).toContain(conf.default.PROJECT + '/launches/all');
   });

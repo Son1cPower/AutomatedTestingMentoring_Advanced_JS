@@ -8,7 +8,7 @@ describe('Open and check Suites', () => {
   });
 
   for (const data of testDataSiutes) {
-    describe('Open and check Suites', () => {
+    describe(`Open and check Suites for launchesID:${data.launchesID}`, () => {
 
       before('Chack that launches is opened', async () => {
         const sideBar = page('launches').sideBar
