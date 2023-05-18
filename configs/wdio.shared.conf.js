@@ -27,7 +27,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['../src/tests/wdio/*.test2.js'],
+  specs: ['../src/tests/wdio/*.test.js'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -216,11 +216,11 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-  before: async function (capabilities, specs) {
-    await page('login').login(conf.default.LOGIN, conf.default.PASSWORD);
-    await page('launches').sideBar.selectProjectByTitle(conf.default.PROJECT);
-    await page('launches').sideBar.launches.click();
-  },
+  // before: async function (capabilities, specs) {
+  //   await page('login').login(conf.default.LOGIN, conf.default.PASSWORD);
+  //   await page('launches').sideBar.selectProjectByTitle(conf.default.PROJECT);
+  //   await page('launches').sideBar.launches.click();
+  // },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name

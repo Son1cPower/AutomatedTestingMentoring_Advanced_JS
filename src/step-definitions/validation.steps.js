@@ -7,6 +7,42 @@ Then('Page title should {string} {string}', async function (shouldBeParam, title
   return compareText(pageTitle, titleText, shouldBeParam);
 });
 
+
+Then('Page url should {string} {string}', async function (shouldBeParam, urlText) {
+  const pageURL = await browser.getUrl();
+  return compareText(pageURL, urlText, shouldBeParam);
+});
+
+
+Then('total count of Launches should {string} {string}', async function (shouldBeParam, expectedTotalLaunches) {
+  const totalLaunches = String(await page('launches').getTotalCountOfSelectors(await page('launches').getAllLaunches));
+  return compareText(totalLaunches, expectedTotalLaunches, shouldBeParam);
+});
+
+
+Then('exist Launches IDs should {string} {string}', async function (shouldBeParam, expectedLaunchesIDs) {
+  const allLaunchesIDs = (await page('launches').getArrayOfLaunchesIDs(await page('launches').getAllLaunches)).join(", ");
+  return compareText(allLaunchesIDs, expectedLaunchesIDs, shouldBeParam);
+});
+
+
+
+Then('Name for Launche ID:{string} {string} {string}', async function (launchesId, shouldBeParam, expectedLaunchesName) {
+  const launchesName = await page('launches').launchesByID(launchesId).getLaunchesName.getText();
+  // console.log("!!!!!!!!! " + launchesName)
+  // console.log("????????? " + await page('launches').launchesByID(3).getLaunchesName.getText())
+  return compareText(launchesName, expectedLaunchesName, shouldBeParam);
+});
+
+
+
+
+
+
+
+
+
+
 Then(/^modal window should( not)? be displayed$/, async param => {
   let assert = expect(page('doctors').addDoctorModal.rootEl);
   if (param) {

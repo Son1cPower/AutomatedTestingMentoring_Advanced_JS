@@ -1,23 +1,29 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 const { page } = require('../pageobjects');
+const conf = require('../../configs/conf')
 
-Given(/^I am on the (\w+) page$/, async (page) => {
-  console.log('!!!!!!!!!!!!!!!!!!!! + page')
-  return browser.url(`https://ej2.syncfusion.com/showcase/angular/appointmentplanner/#/dashboard`)
-  // await pages[page].open()
+
+
+
+
+Given('I open login page and LogIn', async function () {
+  return await page('login').login(conf.default.LOGIN, conf.default.PASSWORD);
 });
 
-When('I open login page', function () {
-  console.log('!!!!!!!!!!!!!!!!!!!!')
-  return browser.url(`https://ej2.syncfusion.com/showcase/angular/appointmentplanner/#/dashboard`)
-  // return await page('login');
+When('I select my project', async function () {
+  return await page('launches').sideBar.selectProjectByTitle(conf.default.PROJECT);
 });
 
-// When('I open {string} page', function (pageName) {
-//   console.log('!!!!!!!!!!!!!!!!!!!!')
-//   return browser.url(`http://localhost:8080`)
-//   // return await page('login');
-// });
+
+
+
+When('I open launches on SideBar', async function () {
+  return await page('launches').sideBar.launches.click()
+});
+
+
+
+
 
 When('I click {string} link from the side menu', function (link) {
   return page('dashboard').sideMenu.item(link).click();
