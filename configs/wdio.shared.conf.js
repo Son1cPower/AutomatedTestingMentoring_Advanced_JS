@@ -27,7 +27,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['../src/tests/wdio/*.test1.js'],
+  specs: ['../src/tests/wdio/*.test2.js'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -48,7 +48,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 15,
+  maxInstances: Number(conf.default.THREADS),
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:

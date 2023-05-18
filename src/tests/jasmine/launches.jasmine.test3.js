@@ -2,7 +2,7 @@ const { page } = require('../../pageobjects');
 const conf = require('../../../configs/conf')
 const testDataSiutes = require('../../../src/dto/testData-Siutes.json');
 
-describe(`Open and check Suites for launchesID:${data.launchesID}`, () => {
+describe(`Open and check Suites`, () => {
   beforeAll('Select and check project by title', async () => {
     expect(await browser.getUrl()).toContain(conf.default.PROJECT + '/launches/all');
   });
@@ -25,42 +25,42 @@ describe(`Open and check Suites for launchesID:${data.launchesID}`, () => {
         if (data.total) {
           await expect(await page('launches').suiteByID(data.siuteID).getTotalSiutes).toHaveText(data.total);
         } else
-          await expect(await page('launches').suiteByID(data.siuteID).getTotalSiutes).not.toExist()
+          await expect(await page('launches').suiteByID(data.siuteID).getTotalSiutes).not.toBeDisplayed()
       });
 
       it(`Check Passed tests for Siute ID:${data.siuteID}`, async () => {
         if (data.passed) {
           await expect(await page('launches').suiteByID(data.siuteID).getPassedSiutes).toHaveText(data.passed);
         } else
-          await expect(await page('launches').suiteByID(data.siuteID).getPassedSiutes).not.toExist()
+          await expect(await page('launches').suiteByID(data.siuteID).getPassedSiutes).not.toBeDisplayed()
       });
 
       it(`Check Failed tests for Siute ID:${data.siuteID}`, async () => {
         if (data.failed) {
           await expect(await page('launches').suiteByID(data.siuteID).getFailedSiutes).toHaveText(data.failed);
         } else
-          await expect(await page('launches').suiteByID(data.siuteID).getFailedSiutes).not.toExist()
+          await expect(await page('launches').suiteByID(data.siuteID).getFailedSiutes).not.toBeDisplayed()
       });
 
       it(`Check Product Bug for Siute ID:${data.siuteID}`, async () => {
         if (data.productBug) {
           await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesProductBug).toHaveText(data.productBug);
         } else
-          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesProductBug).not.toExist()
+          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesProductBug).not.toBeDisplayed()
       });
 
       it(`Check Automation Bug for Siute ID:${data.siuteID}`, async () => {
         if (data.automationBug) {
           await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesAutoBug).toHaveText(data.automationBug);
         } else
-          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesAutoBug).not.toExist()
+          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesAutoBug).not.toBeDisplayed()
       });
 
       it(`Check To Investigate for Siute ID:${data.siuteID}`, async () => {
         if (data.toInvestigate) {
           await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesToInvestigate).toHaveText(data.toInvestigate);
         } else
-          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesToInvestigate).not.toExist()
+          await expect(await page('launches').suiteByID(data.siuteID).getCountOfSiutesToInvestigate).not.toBeDisplayed()
       });
     });
   }

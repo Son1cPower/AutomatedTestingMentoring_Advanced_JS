@@ -1,9 +1,23 @@
-const { When } = require('@wdio/cucumber-framework');
-const { page } = require('../po');
+const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { page } = require('../pageobjects');
 
-When('I open {string} page', function (pageName) {
-  return page(pageName).open();
+Given(/^I am on the (\w+) page$/, async (page) => {
+  console.log('!!!!!!!!!!!!!!!!!!!! + page')
+  return browser.url(`https://ej2.syncfusion.com/showcase/angular/appointmentplanner/#/dashboard`)
+  // await pages[page].open()
 });
+
+When('I open login page', function () {
+  console.log('!!!!!!!!!!!!!!!!!!!!')
+  return browser.url(`https://ej2.syncfusion.com/showcase/angular/appointmentplanner/#/dashboard`)
+  // return await page('login');
+});
+
+// When('I open {string} page', function (pageName) {
+//   console.log('!!!!!!!!!!!!!!!!!!!!')
+//   return browser.url(`http://localhost:8080`)
+//   // return await page('login');
+// });
 
 When('I click {string} link from the side menu', function (link) {
   return page('dashboard').sideMenu.item(link).click();
