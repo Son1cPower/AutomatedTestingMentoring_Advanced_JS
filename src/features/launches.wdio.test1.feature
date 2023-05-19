@@ -1,14 +1,9 @@
-@launches
+@SmokeTest
 Feature: Launches page
 
-  @launches
+  @E2Etest
   Scenario Outline: Check total count of Launches and exist Launches IDs
     Given I LogIn to Report Portal and selected my project
-    # Then Page title should "be equal to" "Report Portal"
-    # And I select my project
-    # Then Page url should "contain" "project_js"
-    # And I open launches on SideBar
-    # Then Page url should "contain" "/launches/all"
     Then total count of Launches should "be equal to" "<TotalCountOfLaunches>"
     And exist Launches IDs should "be equal to" "<ExistLaunchesIDs>"
 

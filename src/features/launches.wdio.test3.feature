@@ -1,15 +1,9 @@
-@launches
+@Siutes
 Feature: Check launches for Launche page
 
-    @launches
+    @E2Etest
     Scenario Outline: Check all items for Launches ID:"<launchesID>"
         Given I LogIn to Report Portal and selected my project
-        # Given I open login page and LogIn
-        # Then Page title should "be equal to" "Report Portal"
-        # And I select my project
-        # Then Page url should "contain" "project_js"
-        # And I open launches on SideBar
-        # Then Page url should "contain" "/launches/all"
         When I open launches ID:"<launchesID>"
         Then name for Siute ID:"<siuteID>" "be equal to" "<name>"
         And total tests for Siute ID:"<siuteID>" "be equal to" "<total>"
@@ -29,3 +23,15 @@ Feature: Check launches for Launche page
             | 4          | 179     | Launch Tests            | 5     | 5      |        |            |               |               |
             | 4          | 200     | beforeSuite             |       |        |        |            |               | 1             |
             | 4          | 201     | Permission tests        | 5     | 2      | 3      | 3          |               | 1             |
+
+
+
+    @SmokeTest
+    Scenario Outline: Check total count of Launches and exist Launches IDs
+        Given I LogIn to Report Portal and selected my project
+        Then total count of Launches should "be equal to" "<TotalCountOfLaunches>"
+        And exist Launches IDs should "be equal to" "<ExistLaunchesIDs>"
+
+        Examples:
+            | TotalCountOfLaunches | ExistLaunchesIDs |
+            | 5                    | 1, 2, 3, 4, 5    |
