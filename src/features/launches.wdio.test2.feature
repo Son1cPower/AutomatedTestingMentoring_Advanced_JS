@@ -3,13 +3,13 @@ Feature: Check launches for Launche page
 
     @launches
     Scenario Outline: Check all items for Launches ID:"<launchesID>"
-        # Given I open login page and LogIn
+        Given I LogIn to Report Portal and selected my project
         # Then Page title should "be equal to" "Report Portal"
         # And I select my project
         # Then Page url should "contain" "project_js"
         # And I open launches on SideBar
         # Then Page url should "contain" "/launches/all"
-        And name for Launche ID:"<launchesID>" "be equal to" "<name>"
+        Then name for Launche ID:"<launchesID>" "be equal to" "<name>"
         And total tests for Launche ID:"<launchesID>" "be equal to" "<total>"
         And passed tests for Launche ID:"<launchesID>" "be equal to" "<passed>"
         And failed tests for Launche ID:"<launchesID>" "be equal to" "<failed>"
