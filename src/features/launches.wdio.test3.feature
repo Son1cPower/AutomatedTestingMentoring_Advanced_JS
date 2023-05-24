@@ -1,17 +1,17 @@
 @Siutes
-Feature: Check launches for Launche page
+Feature: Check launches for Launch page
 
     @E2Etest
-    Scenario Outline: Check all items for Launches ID:"<launchesID>"
+    Scenario Outline: Check Siute ID:"<siuteID>" for Launch ID:"<launchesID>"
         Given I LogIn to Report Portal and selected my project
-        When I open launches ID:"<launchesID>"
-        Then name for Siute ID:"<siuteID>" "be equal to" "<name>"
-        And total tests for Siute ID:"<siuteID>" "be equal to" "<total>"
-        And passed tests for Siute ID:"<siuteID>" "be equal to" "<passed>"
-        And failed tests for Siute ID:"<siuteID>" "be equal to" "<failed>"
-        And product bug for Siute ID:"<siuteID>" "be equal to" "<productBug>"
-        And automation bug for Siute ID:"<siuteID>" "be equal to" "<automationBug>"
-        And to investigate issue for Siute ID:"<siuteID>" "be equal to" "<toInvestigate>"
+        When I open launch ID:"<launchesID>"
+        Then "name" for Siute ID:"<siuteID>" "be equal to" "<name>"
+        And "total tests" for Siute ID:"<siuteID>" "be equal to" "<total>"
+        And "passed tests" for Siute ID:"<siuteID>" "be equal to" "<passed>"
+        And "failed tests" for Siute ID:"<siuteID>" "be equal to" "<failed>"
+        And "product bug" for Siute ID:"<siuteID>" "be equal to" "<productBug>"
+        And "automation bug" for Siute ID:"<siuteID>" "be equal to" "<automationBug>"
+        And "to investigate issue" for Siute ID:"<siuteID>" "be equal to" "<toInvestigate>"
 
 
         Examples:
@@ -29,9 +29,5 @@ Feature: Check launches for Launche page
     @SmokeTest
     Scenario Outline: Check total count of Launches and exist Launches IDs
         Given I LogIn to Report Portal and selected my project
-        Then total count of Launches should "be equal to" "<TotalCountOfLaunches>"
-        And exist Launches IDs should "be equal to" "<ExistLaunchesIDs>"
-
-        Examples:
-            | TotalCountOfLaunches | ExistLaunchesIDs |
-            | 5                    | 1, 2, 3, 4, 5    |
+        Then total count of Launches should "be equal to" "5"
+        And exist Launches IDs should "be equal to" "1, 2, 3, 4, 5"

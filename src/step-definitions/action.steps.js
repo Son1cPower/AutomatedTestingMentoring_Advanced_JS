@@ -15,7 +15,7 @@ When('I open launches page on SideBar', async function () {
   return await page('launches').sideBar.launches.click()
 });
 
-When('I open launches ID:{string}', async function (launchesID) {
+When('I open launch ID:{string}', async function (launchesID) {
   await page('launches').launchesByID(launchesID).openLaunches()
 });
 

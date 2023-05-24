@@ -1,18 +1,18 @@
 @Launches
-Feature: Check launches for Launche page
+Feature: Check launches for Launch page
 
     @E2Etest
-    Scenario Outline: Check all items for Launches ID:"<launchesID>"
+    Scenario Outline: Check all items for Launch ID:"<launchesID>"
         Given I LogIn to Report Portal and selected my project
-        Then name for Launche ID:"<launchesID>" "be equal to" "<name>"
-        And total tests for Launche ID:"<launchesID>" "be equal to" "<total>"
-        And passed tests for Launche ID:"<launchesID>" "be equal to" "<passed>"
-        And failed tests for Launche ID:"<launchesID>" "be equal to" "<failed>"
-        And skipped tests for Launche ID:"<launchesID>" "be equal to" "<skipped>"
-        And product bug for Launche ID:"<launchesID>" "be equal to" "<productBug>"
-        And automation bug for Launche ID:"<launchesID>" "be equal to" "<automationBug>"
-        And system issue for Launche ID:"<launchesID>" "be equal to" "<systemIssue>"
-        And to investigate issue for Launche ID:"<launchesID>" "be equal to" "<toInvestigate>"
+        Then "name" for Launch ID:"<launchesID>" "be equal to" "<name>"
+        And "total tests" for Launch ID:"<launchesID>" "be equal to" "<total>"
+        And "passed tests" for Launch ID:"<launchesID>" "be equal to" "<passed>"
+        And "failed tests" for Launch ID:"<launchesID>" "be equal to" "<failed>"
+        And "skipped tests" for Launch ID:"<launchesID>" "be equal to" "<skipped>"
+        And "product bug" for Launch ID:"<launchesID>" "be equal to" "<productBug>"
+        And "automation bug" for Launch ID:"<launchesID>" "be equal to" "<automationBug>"
+        And "system issue" for Launch ID:"<launchesID>" "be equal to" "<systemIssue>"
+        And "to investigate issue" for Launch ID:"<launchesID>" "be equal to" "<toInvestigate>"
 
 
 
