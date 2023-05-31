@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 1,
+    "passes": 0,
     "pending": 0,
-    "failures": 0,
-    "start": "2023-05-31T09:51:31.964Z",
-    "end": "2023-05-31T09:51:32.099Z",
-    "duration": 135,
+    "failures": 1,
+    "start": "2023-05-31T10:18:35.361Z",
+    "end": "2023-05-31T10:18:35.530Z",
+    "duration": 169,
     "testsRegistered": 1,
-    "passPercent": 100,
+    "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "92d7357a-3c43-421c-98c6-d42a49769319",
+      "uuid": "7359c802-0904-4b61-9f34-1e303980d062",
       "title": "",
       "fullFile": "C:\\Users\\Stanislav_Nehrii\\Desktop\\AutomatedTestingMentoring_Advanced_JS\\src\\testsAPI\\test.spec.js",
       "file": "\\src\\testsAPI\\test.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "278210e6-85d9-4018-b66b-019071375c11",
+          "uuid": "39d9c056-7ee3-4877-84ed-4981cbd6645b",
           "title": "API Test Suite",
           "fullFile": "C:\\Users\\Stanislav_Nehrii\\Desktop\\AutomatedTestingMentoring_Advanced_JS\\src\\testsAPI\\test.spec.js",
           "file": "\\src\\testsAPI\\test.spec.js",
@@ -35,32 +35,36 @@
           "afterHooks": [],
           "tests": [
             {
-              "title": "should get() all launches for project",
-              "fullTitle": "API Test Suite should get() all launches for project",
+              "title": "Get list of project launches ",
+              "fullTitle": "API Test Suite Get list of project launches ",
               "timedOut": false,
-              "duration": 127,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
+              "duration": 161,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
-              "code": "const response = await sendRequest('project_js/launch');\nexpect(response.status).to.equal(200);\n//expect(response.data[0].id).to.equal(1);",
-              "err": {},
-              "uuid": "178cc8b0-90a3-4346-81d2-38f850f61834",
-              "parentUUID": "278210e6-85d9-4018-b66b-019071375c11",
+              "code": "const response = await sendRequest('project_js/launch');\nexpect(response.status).to.equal(200);\n//expect(response.data[0].id).to.equal(1);\nconsole.log(response.data)\nexpect(response.data.page.totalElements).to.equal(4);",
+              "err": {
+                "message": "AssertionError: expected 5 to equal 4",
+                "estack": "AssertionError: expected 5 to equal 4\n    at Context.<anonymous> (src\\testsAPI\\test.spec.js:13:49)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": "- 5\n+ 4\n"
+              },
+              "uuid": "c80a1ec9-caaa-4e1a-9cc6-ecd5466c2c41",
+              "parentUUID": "39d9c056-7ee3-4877-84ed-4981cbd6645b",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "178cc8b0-90a3-4346-81d2-38f850f61834"
+          "passes": [],
+          "failures": [
+            "c80a1ec9-caaa-4e1a-9cc6-ecd5466c2c41"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 127,
+          "duration": 161,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
