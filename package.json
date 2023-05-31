@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "wdio": "wdio run configs/wdio.shared.conf.js",
+    "wdio:api": "mocha",
     "wdio:mocha": "wdio run configs/wdio_mocha.conf.js",
     "wdio:jasmine": "wdio run configs/wdio_jasmine.conf.js",
     "wdio:cucumber": "wdio run configs/wdio_cucumber.conf.js",
@@ -37,6 +38,8 @@
     "@wdio/selenium-standalone-service": "^8.10.1",
     "@wdio/spec-reporter": "^8.10.2",
     "allure-commandline": "^2.21.0",
+    "axios": "^1.4.0",
+    "chai": "^4.3.7",
     "chromedriver": "^112.0.1",
     "cucumber": "^6.0.7",
     "cucumber-parallel": "^2.0.3",
@@ -55,6 +58,7 @@
     "husky": "^8.0.3",
     "log4js": "^6.9.1",
     "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3",
     "rimraf": "^4.4.1",
     "wdio-chromedriver-service": "^8.1.1",
     "wdio-devtools-service": "^0.1.6",
@@ -63,5 +67,10 @@
     "wdio-reportportal-service": "^7.3.1",
     "wdio-vscode-service": "^5.0.0",
     "winston": "^3.8.2"
+  },
+  "mocha": {
+    "spec": "./src/testsAPI/test.spec.js",
+    "require": "chai/register-expect.js",
+    "reporter": "mochawesome"
   }
 }

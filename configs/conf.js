@@ -10,7 +10,9 @@ if (!environmentUrl) {
 }
 const data = {
   url: environmentUrl,
+  APIurl: environmentUrl + "/api/v1",
   ENVIRONMENT: environment,
+  APIBEARERTOKEN: process.env.APIBEARERTOKEN,
   LOGGER: process.env.LOGGER,
   PROJECT: process.env.PROJECT,
   THREADS: process.env.THREADS,
@@ -18,3 +20,5 @@ const data = {
   PASSWORD: process.env.PASSWORD,
 };
 export default data;
+
+
