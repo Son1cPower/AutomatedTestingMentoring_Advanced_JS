@@ -5,7 +5,7 @@ const TEST_URL = 'http://localhost:8080/api/v1';
 require('dotenv').config().parsed;
 
 const authToken = process.env.APIBEARERTOKEN;
-// const conf = require('../../configs/conf')
+//const conf = require('../../configs/conf')
 // const authToken = conf.APIBEARERTOKEN
 
 
@@ -20,10 +20,13 @@ const sendRequest = async (url, method = 'get', data = null) => {
     return {
       status: response.status,
       data: response.data,
+      statusText: response.statusText
     };
   } catch (error) {
     return {
       status: error.response.status,
+      data: error.response.data,
+      statusText: error.response.statusText
     };
   }
 };
