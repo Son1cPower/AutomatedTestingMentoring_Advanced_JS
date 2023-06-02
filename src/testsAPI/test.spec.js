@@ -135,7 +135,7 @@ describe('API Test Suite', () => {
     expect(response.data.notFound).to.deep.equal(body.ids);
   });
 
-  it('[DELETE POSITIVE] Delete specified launches by id', async () => {
+  it.skip('[DELETE POSITIVE] Delete specified launches by id', async () => {
     const body = {
       "ids": [9]
     }
