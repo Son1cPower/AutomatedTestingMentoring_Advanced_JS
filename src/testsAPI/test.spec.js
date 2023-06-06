@@ -1,8 +1,7 @@
 const { expect } = require('chai');
 const { sendRequest } = require('../helpers/api.helper');
 const testData = require('../dto/testData.json');
-
-require('dotenv').config().parsed;
+const conf = require('../../configs/conf')
 
 describe('API Test Suite', () => {
   let demoProjectID;
@@ -24,7 +23,7 @@ describe('API Test Suite', () => {
   });
 
   it('[GET POSITIVE] Get list of project launches and compare with DTO file', async () => {
-    const response = await sendRequest(`${process.env.PROJECT}/launch`);
+    const response = await sendRequest(`${conf.PROJECT}/launch`);
     expect(response.status).to.equal(200);
     expect(response.data.page.totalElements).to.equal(5);
     const launchIds = response.data.content.map((launch) => launch.id);

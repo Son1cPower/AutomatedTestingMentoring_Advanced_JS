@@ -3,7 +3,7 @@ const conf = require('../../../configs/conf')
 
 describe('Open and check all Launches', () => {
   beforeAll('Select project by title', async () => {
-    expect(await browser.getUrl()).toContain(conf.default.PROJECT + '/launches/all');
+    expect(await browser.getUrl()).toContain(conf.PROJECT + '/launches/all');
   });
 
   it('Check total count of Launches', async () => {

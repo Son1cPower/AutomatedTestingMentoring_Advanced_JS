@@ -30,7 +30,7 @@ class LoginPage extends BaseComponent {
     await this.btnLogin.click();
   }
   async open() {
-    let url = conf.default.url;
+    let url = conf.URL;
     return super.open(url);
   }
 }
