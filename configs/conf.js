@@ -10,7 +10,7 @@ if (!environmentUrl) {
 }
 const data = {
   URL: environmentUrl,
-  APIURL: environmentUrl + "/api/v1",
+  APIURL: `${environmentUrl}/api/v1`,
   ENVIRONMENT: environment,
   APIBEARERTOKEN: process.env.APIBEARERTOKEN,
   LOGGER: process.env.LOGGER,
