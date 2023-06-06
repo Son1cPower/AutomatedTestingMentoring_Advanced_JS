@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "wdio": "wdio run configs/wdio.shared.conf.js",
-    "api": "mocha",
+    "api": "mocha --timeout 99000",
     "wdio:mocha": "wdio run configs/wdio_mocha.conf.js",
     "wdio:jasmine": "wdio run configs/wdio_jasmine.conf.js",
     "wdio:cucumber": "wdio run configs/wdio_cucumber.conf.js",

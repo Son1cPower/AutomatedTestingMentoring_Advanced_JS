@@ -10,7 +10,6 @@ describe('API Test Suite', () => {
   let demoProjectName = 'demoproject'
 
   before('Create demo project and data for tests', async function () {
-    this.timeout(120000)
     const bodyForProject = {
       "entryType": "INTERNAL",
       "projectName": demoProjectName
@@ -68,7 +67,6 @@ describe('API Test Suite', () => {
   });
 
   it('[POST POSITIVE] Deep Merge set of specified launches in common one', async function () {
-    this.timeout(120000)
     const body = {
       "launches": [arrOfDemoLaunchesID[2], arrOfDemoLaunchesID[3]],
       "mergeType": "DEEP",
