@@ -2,9 +2,30 @@ const { expect } = require('chai');
 const { sendRequest } = require('../helpers/api.helper');
 const testData = require('../dto/testData.json');
 
+require('dotenv').config().parsed;
+
 describe('API Test Suite', () => {
-  it('[GET POSITIVE] Get list of project launches', async () => {
-    const response = await sendRequest('project_js/launch');
+  let demoProjectID;
+  let arrOfDemoLaunchesID = [];
+  let demoProjectName = 'demoproject'
+
+  before('Create demo project and data for tests', async function () {
+    this.timeout(120000)
+    const bodyForProject = {
+      "entryType": "INTERNAL",
+      "projectName": demoProjectName
+    }
+    response = await sendRequest('project', 'post', bodyForProject);
+    expect(await response.status).to.equal(201);
+    demoProjectID = response.data.id
+    const bodyForData = {}
+    response = await sendRequest(`demo/${demoProjectName}`, 'post', bodyForData);
+    expect(await response.status).to.equal(200);
+    arrOfDemoLaunchesID = response.data.launchIds
+  });
+
+  it('[GET POSITIVE] Get list of project launches and compare with DTO file', async () => {
+    const response = await sendRequest(`${process.env.PROJECT}/launch`);
     expect(response.status).to.equal(200);
     expect(response.data.page.totalElements).to.equal(5);
     const launchIds = response.data.content.map((launch) => launch.id);
@@ -13,7 +34,7 @@ describe('API Test Suite', () => {
   });
 
   it('[GET NEGATIVE] Get list of project launches for incorect project name', async () => {
-    const response = await sendRequest('NEWproject_js/launch');
+    const response = await sendRequest('fake_project_name/launch');
     expect(response.status).to.equal(403);
     expect(response.data.errorCode).to.equal(4003);
     expect(response.data.message).to.equal('You do not have enough permissions. Please check the list of your available projects.');
@@ -21,44 +42,43 @@ describe('API Test Suite', () => {
 
   it('[POST NEGATIVE_1] Merge set of incorect launches in common one', async () => {
     const body = {
-      "launches": [1, 2],
+      "launches": [arrOfDemoLaunchesID[0], arrOfDemoLaunchesID[1]],
       "mergeType": "standart",
       "name": "New Merge"
     }
-    response = await sendRequest('project_js/launch/merge ', 'post', body);
+    response = await sendRequest(`${demoProjectName}/launch/merge `, 'post', body);
     expect(response.status).to.equal(406);
     expect(response.data.errorCode).to.equal(40033);
     expect(response.data.message).to.equal("Merge Strategy type null is unsupported");
-    response = await sendRequest('stanislav_nehrii_personal/launch');
   });
 
   it('[POST NEGATIVE_2] Merge set of incorect launches in common one', async () => {
     const body = {
-      "launches": [1111, 2222],
+      "launches": [(Math.max(...arrOfDemoLaunchesID) + 1), (Math.max(...arrOfDemoLaunchesID) + 2)],
       "mergeType": "DEEP",
       "name": "New Merge"
     }
-    response = await sendRequest('stanislav_nehrii_personal/launch/merge ', 'post', body);
+    response = await sendRequest(`${demoProjectName}/launch/merge `, 'post', body);
     expect(response.status).to.equal(400);
     expect(response.data.errorCode).to.equal(40016);
     expect(response.data.message).to.equal("Error in handled Request. Please, check specified parameters: 'Not all launches with provided ids were found'");
-    response = await sendRequest('stanislav_nehrii_personal/launch');
+    response = await sendRequest(`${demoProjectName}/launch`);
     const launchIds = response.data.content.map((launch) => launch.id);
-    expect(launchIds).not.to.deep.contain(1111, 2222);
+    expect(launchIds).not.to.deep.contain((Math.max(...arrOfDemoLaunchesID) + 1), (Math.max(...arrOfDemoLaunchesID) + 2));
   });
 
-
-  it.skip('[POST POSITIVE] Deep Merge set of specified launches in common one', async () => {
+  it('[POST POSITIVE] Deep Merge set of specified launches in common one', async function () {
+    this.timeout(120000)
     const body = {
-      "launches": [12, 13],
+      "launches": [arrOfDemoLaunchesID[2], arrOfDemoLaunchesID[3]],
       "mergeType": "DEEP",
       "name": "New Merge"
     }
-    response = await sendRequest('stanislav_nehrii_personal/launch/merge ', 'post', body);
+    response = await sendRequest(`${demoProjectName}/launch/merge `, 'post', body);
     expect(response.status).to.equal(200);
-    response = await sendRequest('project_js/launch');
+    response = await sendRequest(`${demoProjectName}/launch`);
     const launchIds = response.data.content.map((launch) => launch.id);
-    expect(launchIds).not.to.deep.contain(12, 13);
+    expect(launchIds).not.to.deep.contain(arrOfDemoLaunchesID[2], arrOfDemoLaunchesID[3]);
     const launchNames = response.data.content.map((launch) => launch.name);
     expect(launchNames).to.deep.contain("New Merge");
   });
@@ -77,12 +97,12 @@ describe('API Test Suite', () => {
             "value": "MacOS"
           }
         }],
-      "ids": [6]
+      "ids": [arrOfDemoLaunchesID[4]]
     }
-    response = await sendRequest('stanislav_nehrii_personal/launch/info ', 'put', body);
+    response = await sendRequest(`${demoProjectName}/launch/info `, 'put', body);
     expect(response.status).to.equal(200);
-    response = await sendRequest('stanislav_nehrii_personal/launch');
-    await expect(response.data.content.find(elem => elem.id === 6).attributes.some(elem => elem.key === `demo` && elem.value === `MacOS`)).to.be.true;
+    response = await sendRequest(`${demoProjectName}/launch`);
+    await expect(response.data.content.find(elem => elem.id === arrOfDemoLaunchesID[4]).attributes.some(elem => elem.key === `demo` && elem.value === `MacOS`)).to.be.true;
   });
 
   it('[PUT NEGATIVE_1] Bulk added attributes', async () => {
@@ -101,7 +121,7 @@ describe('API Test Suite', () => {
         }],
 
     }
-    response = await sendRequest('stanislav_nehrii_personal/launch/info ', 'put', body);
+    response = await sendRequest(`${demoProjectName}/launch/info `, 'put', body);
     expect(response.status).to.equal(400);
     expect(response.data.errorCode).to.equal(4001);
     expect(response.data.message).to.equal("Incorrect Request. [Field 'ids' should not be null.] ");
@@ -116,9 +136,9 @@ describe('API Test Suite', () => {
             "value": "demo"
           }
         }],
-      "ids": [1]
+      "ids": [arrOfDemoLaunchesID[0]]
     }
-    response = await sendRequest('stanislav_nehrii_personal/launch/info ', 'put', body);
+    response = await sendRequest(`${demoProjectName}/launch/info `, 'put', body);
     expect(response.status).to.equal(500);
     expect(response.data.errorCode).to.equal(5000);
     expect(response.data.message).to.equal("Unclassified error [null]");
@@ -126,27 +146,38 @@ describe('API Test Suite', () => {
 
   it('[DELETE NEGATIVE] Delete specified launches by id', async () => {
     const body = {
-      "ids": [555]
+      "ids": [(Math.max(...arrOfDemoLaunchesID) + 10)]
     }
-    response = await sendRequest('stanislav_nehrii_personal/launch ', 'delete', body);
+    response = await sendRequest(`${demoProjectName}/launch `, 'delete', body);
     expect(response.status).to.equal(200);
     expect(response.data.successfullyDeleted.length).to.equal(0);
     expect(response.data.errors.length).to.equal(0);
     expect(response.data.notFound).to.deep.equal(body.ids);
   });
 
-  it.skip('[DELETE POSITIVE] Delete specified launches by id', async () => {
+  it('[DELETE POSITIVE] Delete specified launches by id', async () => {
     const body = {
-      "ids": [9]
+      "ids": [arrOfDemoLaunchesID[1]]
     }
-    response = await sendRequest('stanislav_nehrii_personal/launch ', 'delete', body);
+    response = await sendRequest(`${demoProjectName}/launch `, 'delete', body);
     expect(response.status).to.equal(200);
     expect(response.data.successfullyDeleted).to.deep.equal(body.ids);
     expect(response.data.errors.length).to.equal(0);
     expect(response.data.notFound.length).to.equal(0);
-    response = await sendRequest('stanislav_nehrii_personal/launch');
+    response = await sendRequest(`${demoProjectName}/launch`);
     const launchIds = response.data.content.map((launch) => launch.id);
     expect(body.ids.every(value => !launchIds.includes(value))).is.true
   });
 
+  after('Delete demo project and data after tests', async function () {
+    this.timeout(120000)
+    const body = {
+      "ids": [demoProjectID]
+    }
+    response = await sendRequest('project', 'delete', body);
+    expect(await response.status).to.equal(200);
+    response = await sendRequest('project/names');
+    expect(await response.status).to.equal(200);
+    expect(await response.data.includes(demoProjectName)).to.equal(false);
+  });
 });
