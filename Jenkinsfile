@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat label: '', script: 'npm install'
+                bat 'cmd /c "npm install"'
             }
         }
         
@@ -12,19 +12,19 @@ pipeline {
             parallel {
                 stage('Mocha Tests') {
                     steps {
-                        bat label: '', script: 'npm run wdio:mocha'
+                        bat 'cmd /c "npm run wdio:mocha"'
                     }
                 }
                 
                 stage('Cucumber Tests') {
                     steps {
-                        bat label: '', script: 'npm run wdio:cucumber'
+                        bat 'cmd /c "npm run wdio:cucumber"'
                     }
                 }
                 
                 stage('API Tests') {
                     steps {
-                        bat label: '', script: 'npm run api'
+                        bat 'cmd /c "npm run api"'
                     }
                 }
             }
