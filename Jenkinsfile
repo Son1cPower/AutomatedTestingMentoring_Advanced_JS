@@ -24,7 +24,7 @@ pipeline {
                 
                 stage('API Tests') {
                     steps {
-                        sh 'npm run wdio:api'
+                        sh 'npm run api'
                     }
                 }
             }
