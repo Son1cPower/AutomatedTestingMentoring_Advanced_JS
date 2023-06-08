@@ -1,24 +1,32 @@
 pipeline {
     agent any
+    
     stages {
-        stage('Build') {
+        stage('Install Dependencies') {
             steps {
-                npm install
+                sh 'npm install'
             }
         }
-          stage('Test 1') {
-            steps {
-                npm run wdio:mocha
-            }
-        }
-        stage('Test 2') {
-            steps {
-                npm run wdio:cucumber
-            }
-        }
-        stage('Test 3') {
-            steps {
-                npm run wdio:api
+        
+        stage('Run Tests') {
+            parallel {
+                stage('Mocha Tests') {
+                    steps {
+                        sh 'npm run wdio:mocha'
+                    }
+                }
+                
+                stage('Cucumber Tests') {
+                    steps {
+                        sh 'npm run wdio:cucumber'
+                    }
+                }
+                
+                stage('API Tests') {
+                    steps {
+                        sh 'npm run wdio:api'
+                    }
+                }
             }
         }
     }
