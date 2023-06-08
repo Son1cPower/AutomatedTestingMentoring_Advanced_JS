@@ -4,6 +4,8 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
+                bat 'cmd /c "cd %WORKSPACE% && dir"'
+                bat 'cmd /c "npm --version"'
                 bat 'cmd /c "npm install"'
             }
         }
@@ -12,18 +14,21 @@ pipeline {
             parallel {
                 stage('Mocha Tests') {
                     steps {
+                        bat 'cmd /c "cd %WORKSPACE% && dir"'
                         bat 'cmd /c "npm run wdio:mocha"'
                     }
                 }
                 
                 stage('Cucumber Tests') {
                     steps {
+                        bat 'cmd /c "cd %WORKSPACE% && dir"'
                         bat 'cmd /c "npm run wdio:cucumber"'
                     }
                 }
                 
                 stage('API Tests') {
                     steps {
+                        bat 'cmd /c "cd %WORKSPACE% && dir"'
                         bat 'cmd /c "npm run api"'
                     }
                 }
