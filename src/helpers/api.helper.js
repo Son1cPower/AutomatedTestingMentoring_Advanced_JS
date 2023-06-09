@@ -9,17 +9,9 @@ const sendRequest = async (url, method = 'get', data = null) => {
       headers: { Authorization: `Bearer ${conf.APIBEARERTOKEN}` },
       data,
     });
-    return {
-      status: response.status,
-      data: response.data,
-      statusText: response.statusText
-    };
+    return response;
   } catch (error) {
-    return {
-      status: error.response.status,
-      data: error.response.data,
-      statusText: error.response.statusText
-    };
+    return error.response;
   }
 };
 

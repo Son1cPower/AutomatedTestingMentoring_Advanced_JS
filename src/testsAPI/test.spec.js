@@ -8,7 +8,16 @@ describe('API Test Suite', () => {
   let arrOfDemoLaunchesID = [];
   let demoProjectName = 'demoproject'
 
-  before('Create demo project and data for tests', async function () {
+  function assertApiResponse(response, expectedStatus, expectedErrorCode = undefined, expectedMessage = undefined) {
+    expect(response.status).to.equal(expectedStatus);
+    expect(response.data.errorCode).to.equal(expectedErrorCode);
+    expect(response.data.message).to.equal(expectedMessage);
+  }
+
+  assertApiResponse(response, 201, undefined, "ssss");
+
+
+  before('[PRECONDITIONS] Create demo project and data for tests', async function () {
     const bodyForProject = {
       "entryType": "INTERNAL",
       "projectName": demoProjectName
@@ -20,6 +29,18 @@ describe('API Test Suite', () => {
     response = await sendRequest(`demo/${demoProjectName}`, 'post', bodyForData);
     expect(await response.status).to.equal(200);
     arrOfDemoLaunchesID = response.data.launchIds
+  });
+
+  after('[POSTCONDITIONS] Delete demo project and data after tests', async function () {
+    this.timeout(120000)
+    const body = {
+      "ids": [demoProjectID]
+    }
+    response = await sendRequest('project', 'delete', body);
+    expect(await response.status).to.equal(200);
+    response = await sendRequest('project/names');
+    expect(await response.status).to.equal(200);
+    expect(await response.data.includes(demoProjectName)).to.equal(false);
   });
 
   it('[GET POSITIVE] Get list of project launches and compare with DTO file', async () => {
@@ -166,15 +187,5 @@ describe('API Test Suite', () => {
     expect(body.ids.every(value => !launchIds.includes(value))).is.true
   });
 
-  after('Delete demo project and data after tests', async function () {
-    this.timeout(120000)
-    const body = {
-      "ids": [demoProjectID]
-    }
-    response = await sendRequest('project', 'delete', body);
-    expect(await response.status).to.equal(200);
-    response = await sendRequest('project/names');
-    expect(await response.status).to.equal(200);
-    expect(await response.data.includes(demoProjectName)).to.equal(false);
-  });
+
 });
