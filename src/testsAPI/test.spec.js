@@ -1,55 +1,128 @@
-const { expect } = require('chai');
+const chai = require('chai');
+chai.use(require('chai-json-schema'));
 const { sendRequest } = require('../helpers/api.helper');
-const testData = require('../dto/testData.json');
-const conf = require('../../configs/conf')
+
 
 describe('API Test Suite', () => {
   let demoProjectID;
   let arrOfDemoLaunchesID = [];
   let demoProjectName = 'demoproject'
-
-  function assertApiResponse(response, expectedStatus, expectedErrorCode = undefined, expectedMessage = undefined) {
-    expect(response.status).to.equal(expectedStatus);
-    expect(response.data.errorCode).to.equal(expectedErrorCode);
-    expect(response.data.message).to.equal(expectedMessage);
+  const commonAttributes = [
+    {
+      "action": "CREATE",
+      "from": {
+        "key": "os",
+        "value": "Android"
+      },
+      "to": {
+        "key": "demo",
+        "value": "MacOS"
+      }
+    }
+  ];
+  let responseSchema = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "integer"
+      },
+      "statusText": {
+        "type": "string"
+      },
+      "data": {}
+    },
+    "required": ["status", "statusText", "data"]
   }
-
-  assertApiResponse(response, 201, undefined, "ssss");
-
 
   before('[PRECONDITIONS] Create demo project and data for tests', async function () {
     const bodyForProject = {
       "entryType": "INTERNAL",
       "projectName": demoProjectName
     }
+    responseSchema.properties.data = {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": ["id"]
+    }
     response = await sendRequest('project', 'post', bodyForProject);
     expect(await response.status).to.equal(201);
     demoProjectID = response.data.id
+    expect(await response).to.be.jsonSchema(responseSchema);
     const bodyForData = {}
     response = await sendRequest(`demo/${demoProjectName}`, 'post', bodyForData);
     expect(await response.status).to.equal(200);
     arrOfDemoLaunchesID = response.data.launchIds
+    responseSchema.properties.data = {
+      "type": "object",
+      "properties": {
+        "dashboardId": {
+          "type": "integer"
+        },
+        "launchIds": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": ["dashboardId", "launchIds"]
+    }
+
+    expect(await response).to.be.jsonSchema(responseSchema);
   });
 
   after('[POSTCONDITIONS] Delete demo project and data after tests', async function () {
-    this.timeout(120000)
     const body = {
       "ids": [demoProjectID]
     }
     response = await sendRequest('project', 'delete', body);
     expect(await response.status).to.equal(200);
+    responseSchema.properties.data = {
+      "type": "object",
+      "properties": {
+        "successfullyDeleted": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "notFound": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": ["successfullyDeleted", "notFound", "errors"]
+    }
     response = await sendRequest('project/names');
+    responseSchema.properties.data = {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
     expect(await response.status).to.equal(200);
     expect(await response.data.includes(demoProjectName)).to.equal(false);
   });
 
-  it('[GET POSITIVE] Get list of project launches and compare with DTO file', async () => {
-    const response = await sendRequest(`${conf.PROJECT}/launch`);
+  it('[GET POSITIVE] Get list of project launches', async () => {
+    const response = await sendRequest(`${demoProjectName}/launch`);
     expect(response.status).to.equal(200);
     expect(response.data.page.totalElements).to.equal(5);
     const launchIds = response.data.content.map((launch) => launch.id);
-    const expectedIds = testData.map((data) => Number(data.launchesID))
-    expect(launchIds).to.deep.equal(expectedIds);
+    expect(launchIds).to.deep.equal(arrOfDemoLaunchesID);
   });
 
   it('[GET NEGATIVE] Get list of project launches for incorect project name', async () => {
@@ -103,20 +176,9 @@ describe('API Test Suite', () => {
 
   it('[PUT POSITIVE] Bulk added attributes', async () => {
     const body = {
-      "attributes": [
-        {
-          "action": "CREATE",
-          "from": {
-            "key": "os",
-            "value": "Android"
-          },
-          "to": {
-            "key": "demo",
-            "value": "MacOS"
-          }
-        }],
+      "attributes": [...commonAttributes],
       "ids": [arrOfDemoLaunchesID[4]]
-    }
+    };
     response = await sendRequest(`${demoProjectName}/launch/info `, 'put', body);
     expect(response.status).to.equal(200);
     response = await sendRequest(`${demoProjectName}/launch`);
@@ -125,20 +187,8 @@ describe('API Test Suite', () => {
 
   it('[PUT NEGATIVE_1] Bulk added attributes', async () => {
     const body = {
-      "attributes": [
-        {
-          "action": "CREATE",
-          "from": {
-            "key": "os",
-            "value": "Android"
-          },
-          "to": {
-            "key": "demo",
-            "value": "MacOS"
-          }
-        }],
-
-    }
+      "attributes": [...commonAttributes]
+    };
     response = await sendRequest(`${demoProjectName}/launch/info `, 'put', body);
     expect(response.status).to.equal(400);
     expect(response.data.errorCode).to.equal(4001);
