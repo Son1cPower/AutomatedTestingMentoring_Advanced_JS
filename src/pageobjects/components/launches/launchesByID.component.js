@@ -8,7 +8,6 @@ class LaunchesByIDcomponent extends BaseComponent {
         super(launchesByID);
         this.id = id;
     }
-
     get getLaunchesName() {
         const getLaunchesName = 'td .tooltip__tooltip-trigger--3Z4Hc.itemInfo__name--27fwI span';
         logger.info(`Get element getLaunchesName with selector ${getLaunchesName}`);
@@ -46,13 +45,11 @@ class LaunchesByIDcomponent extends BaseComponent {
         logger.info(`Get element getCountOfAutomationBug with selector ${getCountOfAutomationBug}`);
         return this.rootEl.$(getCountOfAutomationBug);
     }
-
     get getCountOfSystemIssue() {
         const getCountOfSystemIssue = '.launchSuiteGrid__si-col--1selD.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
         logger.info(`Get element getCountOfSystemIssue with selector ${getCountOfSystemIssue}`);
         return this.rootEl.$(getCountOfSystemIssue);
     }
-
     get getCountOfToInvestigate() {
         const getCountOfToInvestigate = '.launchSuiteGrid__ti-col--33O72.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG .donutChart__total--3QqJr';
         logger.info(`Get element getCountOfToInvestigate with selector ${getCountOfToInvestigate}`);
@@ -67,5 +64,4 @@ class LaunchesByIDcomponent extends BaseComponent {
     }
 
 }
-
 module.exports = LaunchesByIDcomponent;

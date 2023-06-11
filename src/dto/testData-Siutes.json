@@ -1,0 +1,53 @@
+[
+  {
+    "launchesID": "5",
+    "siuteID": "278",
+    "name": "Sharing tests",
+    "total": "5",
+    "passed": "5"
+  },
+  {
+    "launchesID": "4",
+    "siuteID": "142",
+    "name": "Suite with retries",
+    "total": "1",
+    "failed": "1",
+    "productBug": "1"
+  },
+  {
+    "launchesID": "4",
+    "siuteID": "148",
+    "name": "Suite with nested steps",
+    "total": "1",
+    "failed": "1",
+    "automationBug": "1"
+  },
+  {
+    "launchesID": "4",
+    "siuteID": "160",
+    "name": "beforeSuite"
+  },
+  {
+    "launchesID": "4",
+    "siuteID": "179",
+    "name": "Launch Tests",
+    "total": "5",
+    "passed": "5"
+  },
+  {
+    "launchesID": "4",
+    "siuteID": "200",
+    "name": "beforeSuite",
+    "toInvestigate": "1"
+  },
+  {
+    "launchesID": "4",
+    "siuteID": "201",
+    "name": "Permission tests",
+    "total": "5",
+    "passed": "2",
+    "failed": "3",
+    "productBug": "3",
+    "toInvestigate": "1"
+  }
+]

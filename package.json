@@ -2,10 +2,11 @@
   "name": "automatedtestingmentoring_advanced_js",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "wdio": "wdio run configs/wdio.shared.conf.js",
-    "wdio_j": "wdio run configs/wdio_jasmine.conf.js",
+    "wdio:mocha": "wdio run configs/wdio_mocha.conf.js",
+    "wdio:jasmine": "wdio run configs/wdio_jasmine.conf.js",
+    "wdio:cucumber": "wdio run configs/wdio_cucumber.conf.js",
     "clean": "rimraf ./node_modules allure-report allure-results",
     "allure": "npx allure generate --clean allure-results && npx allure open",
     "test": "npx playwright test",
@@ -28,14 +29,16 @@
     "@playwright/test": "^1.32.2",
     "@types/winston": "^2.4.4",
     "@wdio/allure-reporter": "^8.7.0",
-    "@wdio/cli": "^8.7.0",
-    "@wdio/cucumber-framework": "^8.8.7",
+    "@wdio/cli": "^8.10.2",
+    "@wdio/cucumber-framework": "^8.10.3",
     "@wdio/jasmine-framework": "8.8.8",
-    "@wdio/local-runner": "^8.7.0",
+    "@wdio/local-runner": "^8.10.2",
     "@wdio/mocha-framework": "^8.7.0",
-    "@wdio/spec-reporter": "^8.7.0",
+    "@wdio/selenium-standalone-service": "^8.10.1",
+    "@wdio/spec-reporter": "^8.10.2",
     "allure-commandline": "^2.21.0",
-    "chromedriver": "^112.0.0",
+    "chromedriver": "^112.0.1",
+    "cucumber": "^6.0.7",
     "dotenv": "^16.0.3",
     "eslint": "^8.39.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -53,6 +56,7 @@
     "mocha": "^10.2.0",
     "rimraf": "^4.4.1",
     "wdio-chromedriver-service": "^8.1.1",
+    "wdio-devtools-service": "^0.1.6",
     "wdio-edgedriver-service": "^1.2.0",
     "wdio-geckodriver-service": "^4.1.1",
     "wdio-reportportal-service": "^7.3.1",
@@ -60,4 +64,3 @@
     "winston": "^3.8.2"
   }
 }
-

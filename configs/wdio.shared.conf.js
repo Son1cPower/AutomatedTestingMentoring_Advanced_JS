@@ -1,4 +1,6 @@
 const allure = require('allure-commandline');
+const conf = require('./conf')
+const { page } = require('../src/pageobjects');
 
 exports.config = {
 
@@ -46,7 +48,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 30,
+  maxInstances: Number(conf.default.THREADS),
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -57,7 +59,7 @@ exports.config = {
       // maxInstances can get overwritten per capability. So if you have an in-house Selenium
       // grid with only 5 firefox instances available you can make sure that not more than
       // 5 instances get started at a time.
-      maxInstances: 10,
+      maxInstances: Number(conf.default.THREADS),
       //
       browserName: 'chrome',
       acceptInsecureCerts: true,
@@ -68,7 +70,7 @@ exports.config = {
           // '--headless',
           '--disable-gpu',
           '--window-size=1600,900',
-        ],
+        ]
       },
       // If outputDir is provided WebdriverIO can capture driver session logs
       // it is possible to configure which logTypes to include/exclude.
@@ -209,9 +211,11 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-  // before: function (capabilities, specs) {
-
-  // },
+  before: async function (capabilities, specs) {
+    await page('login').login(conf.default.LOGIN, conf.default.PASSWORD);
+    await page('launches').sideBar.selectProjectByTitle(conf.default.PROJECT);
+    await page('launches').sideBar.launches.click();
+  },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name
@@ -228,7 +232,11 @@ exports.config = {
   /**
    * Function to be executed before a test (in Mocha/Jasmine) starts.
    */
-  // beforeTest: function (test, context) {
+  // beforeTest: async function (test, context) {
+
+
+
+
   // },
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling

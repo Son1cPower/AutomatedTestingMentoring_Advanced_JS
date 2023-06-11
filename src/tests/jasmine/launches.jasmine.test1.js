@@ -2,7 +2,7 @@ const { page } = require('../../pageobjects');
 const conf = require('../../../configs/conf')
 
 describe('Open and check all Launches', () => {
-  before('Select project by title', async () => {
+  beforeAll('Select project by title', async () => {
     expect(await browser.getUrl()).toContain(conf.default.PROJECT + '/launches/all');
   });
 

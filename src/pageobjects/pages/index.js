@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 const LaunchesPage = require('./launches.page');
 const LoginPage = require('./login.page');
 
