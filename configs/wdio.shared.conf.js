@@ -1,6 +1,5 @@
 const allure = require('allure-commandline');
 const conf = require('./conf')
-const { page } = require('../src/pageobjects');
 
 exports.config = {
 
@@ -211,11 +210,8 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-  before: async function (capabilities, specs) {
-    await page('login').login(conf.default.LOGIN, conf.default.PASSWORD);
-    await page('launches').sideBar.selectProjectByTitle(conf.default.PROJECT);
-    await page('launches').sideBar.launches.click();
-  },
+  // before: async function (capabilities, specs) {
+  // },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name
