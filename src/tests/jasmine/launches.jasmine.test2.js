@@ -4,7 +4,7 @@ const testData = require('../../../src/dto/testData.json');
 
 describe('Open and check all Launches', () => {
   beforeAll('Select project by title', async () => {
-    expect(await browser.getUrl()).toContain(conf.default.PROJECT + '/launches/all');
+    expect(await browser.getUrl()).toContain(conf.PROJECT + '/launches/all');
   });
 
   testData.forEach((data) => {

@@ -11,8 +11,8 @@ exports.config = {
     ],
   },
   before: async function (capabilities, specs) {
-    await page('login').login(conf.default.LOGIN, conf.default.PASSWORD);
-    await page('launches').sideBar.selectProjectByTitle(conf.default.PROJECT);
+    await page('login').login(conf.LOGIN, conf.PASSWORD);
+    await page('launches').sideBar.selectProjectByTitle(conf.PROJECT);
     await page('launches').sideBar.launches.click();
   },
 };

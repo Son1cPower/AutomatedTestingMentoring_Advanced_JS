@@ -13,6 +13,8 @@ const { defineConfig, devices } = require('@playwright/test');
 module.exports = defineConfig({
   // testDir: './tests',
   //testDir: './src/stepDefinitionsPlaywright/tests',
+
+  //testDir: './src/tests/wdio/launches.wdio.test1.js',
   testDir: './src/tests/playwright',
   /* Run tests in files in parallel */
   fullyParallel: true,

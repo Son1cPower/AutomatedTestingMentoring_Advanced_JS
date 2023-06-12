@@ -5,7 +5,7 @@ const conf = require('../../configs/conf')
 const { siuteFunctions, launchFunctions } = require('../dict/helpBDDActions')
 
 Given('I LogIn to Report Portal and selected my project', async function () {
-  return expect(await browser.getUrl()).toContain(conf.default.PROJECT);
+  return expect(await browser.getUrl()).toContain(conf.PROJECT);
 });
 
 Then('Page title should {string} {string}', async function (shouldBeParam, titleText) {

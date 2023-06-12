@@ -18,3 +18,4 @@ allure-results
 /playwright-report/
 /playwright/.cache/
 .scannerwork
+mochawesome-report
