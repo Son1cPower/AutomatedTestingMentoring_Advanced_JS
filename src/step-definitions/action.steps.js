@@ -4,11 +4,11 @@ const conf = require('../../configs/conf')
 
 
 Given('I open login page and LogIn', async function () {
-  return await page('login').login(conf.LOGIN, conf.PASSWORD);
+  return await page('login').login(conf.default.LOGIN, conf.default.PASSWORD);
 });
 
 When('I select my project', async function () {
-  return await page('launches').sideBar.selectProjectByTitle(conf.PROJECT);
+  return await page('launches').sideBar.selectProjectByTitle(conf.default.PROJECT);
 });
 
 When('I open launches page on SideBar', async function () {
