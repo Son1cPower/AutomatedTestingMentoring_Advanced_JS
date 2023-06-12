@@ -494,6 +494,4 @@ describe('API Test Suite', () => {
     expect(body.ids.every(value => !launchIds.includes(value))).is.true
     expect(await response).to.be.jsonSchema(responceSchemaForGetLaunches);
   });
-
-
 });
