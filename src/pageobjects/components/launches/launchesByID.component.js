@@ -13,8 +13,6 @@ class LaunchesByIDcomponent extends BaseComponent {
         logger.info(`Get element getLaunchesName with selector ${getLaunchesName}`);
         return this.rootEl.$(getLaunchesName);
     }
-
-
     get getTotalTests() {
         const getTotalTests = '.launchSuiteGrid__total-col--1zT8z.gridCell__grid-cell--3e2mS.gridCell__align-left--2beIG a';
         logger.info(`Get element getTotalTests with selector ${getTotalTests}`);
@@ -55,13 +53,10 @@ class LaunchesByIDcomponent extends BaseComponent {
         logger.info(`Get element getCountOfToInvestigate with selector ${getCountOfToInvestigate}`);
         return this.rootEl.$(getCountOfToInvestigate);
     }
-
     async openLaunches() {
-
         const getLaunchesLink = 'td>div>div>.itemInfo__name-link--1ItPc';
         logger.info(`Get element getLaunchesLink with selector ${getLaunchesLink}`);
         return (await this.rootEl.$(getLaunchesLink)).click()
     }
-
 }
 module.exports = LaunchesByIDcomponent;

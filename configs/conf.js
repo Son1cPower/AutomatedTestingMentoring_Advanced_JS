@@ -9,12 +9,15 @@ if (!environmentUrl) {
   console.log("Can't run tests, ENVIRONMENT can be only local OR epam");
 }
 const data = {
-  url: environmentUrl,
+  URL: environmentUrl,
+  APIURL: `${environmentUrl}/api/v1`,
   ENVIRONMENT: environment,
+  APIBEARERTOKEN: process.env.APIBEARERTOKEN,
   LOGGER: process.env.LOGGER,
   PROJECT: process.env.PROJECT,
   THREADS: process.env.THREADS,
   LOGIN: process.env.LOGIN,
   PASSWORD: process.env.PASSWORD,
 };
-export default data;
+module.exports = data;
+

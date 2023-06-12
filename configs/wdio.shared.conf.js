@@ -26,7 +26,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['../src/tests/wdio/*.js'],
+  specs: ['../src/tests/wdio/*.test.js'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -47,7 +47,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: Number(conf.default.THREADS),
+  maxInstances: Number(conf.THREADS),
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -58,7 +58,7 @@ exports.config = {
       // maxInstances can get overwritten per capability. So if you have an in-house Selenium
       // grid with only 5 firefox instances available you can make sure that not more than
       // 5 instances get started at a time.
-      maxInstances: Number(conf.default.THREADS),
+      maxInstances: Number(conf.THREADS),
       //
       browserName: 'chrome',
       acceptInsecureCerts: true,
@@ -68,7 +68,7 @@ exports.config = {
           '--disable-infobars',
           // '--headless',
           '--disable-gpu',
-          '--window-size=1600,900',
+          '--start-maximized',
         ]
       },
       // If outputDir is provided WebdriverIO can capture driver session logs
@@ -147,7 +147,12 @@ exports.config = {
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
-    'spec'
+    'spec',
+    ['allure', {
+      outputDir: 'allure-results',
+      disableWebdriverStepsReporting: false,
+      disableWebdriverScreenshotsReporting: false,
+    }]
   ],
 
   //
