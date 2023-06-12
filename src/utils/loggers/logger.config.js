@@ -2,7 +2,7 @@ import log4js from './log4js/logger';
 import winston from './winston/logger';
 const conf = require('../../../configs/conf')
 
-let loggerType = conf.LOGGER
+let loggerType = conf.default.LOGGER
 let logger = log4js;
 
 if (loggerType === 'log4js') {
