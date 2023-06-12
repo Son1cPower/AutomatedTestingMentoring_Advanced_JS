@@ -4,7 +4,7 @@ const testDataSiutes = require('../../../src/dto/testData-Siutes.json');
 
 describe(`Open and check Suites`, () => {
   beforeAll('Select and check project by title', async () => {
-    expect(await browser.getUrl()).toContain(conf.PROJECT + '/launches/all');
+    expect(await browser.getUrl()).toContain(conf.default.PROJECT + '/launches/all');
   });
 
   for (const data of testDataSiutes) {
