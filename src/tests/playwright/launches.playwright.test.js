@@ -1,7 +1,7 @@
 const conf = require("../../../configs/conf");
 const { test, expect } = require("@playwright/test");
 //const { selectors } = require("playwright");
-const { scrollToElement, clickElem, dragAndDrop } = require("./../../helpers/JsExecutors");
+const { scrollToElement, clickElem, dragAndDrop, resizeElement } = require("./../../helpers/JsExecutors");
 const { waitElementIsDisplayed } = require("../../helpers/Waiters");
 
 test.describe("Open and check all Launches", () => {
@@ -19,6 +19,11 @@ test.describe("Open and check all Launches", () => {
     const dropFrom = page.getByText("LAUNCH STATISTICS AREA");
     const dropTo = page.getByText("LAUNCH STATISTICS BAR");
     await dragAndDrop(page, dropFrom, dropTo);
+
+    await page.pause(10000)
+
+    const elemntForResize = page.locator('.launchStatisticsChart__launch-statistics-chart--2JugX.launchStatisticsChart__area-view--17Qp6 svg')
+    await resizeElement(page, elemntForResize, 800, 800)
 
 
     //const itemScroll = await page.getByText("Flaky test cases table (TOP-50)");
