@@ -1,7 +1,7 @@
 const conf = require("../../../configs/conf");
 const { test, expect } = require("@playwright/test");
 //const { selectors } = require("playwright");
-const { scrollToElement, clickElem, dragAndDrop, resizeElement } = require("./../../helpers/JsExecutors");
+const { scrollToElement, clickElem, dragAndDrop, resizeElement } = require("../../helpers/JsExecutors.js");
 const { waitElementIsDisplayed } = require("../../helpers/Waiters");
 
 test.describe("Open and check all Launches", () => {
