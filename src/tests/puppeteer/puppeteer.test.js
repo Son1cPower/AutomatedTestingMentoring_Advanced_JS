@@ -36,7 +36,7 @@ async function runPuppeteerTest() {
         await dragAndDrop(page, source, target);
         await page.screenshot({ path: 'src/tests/puppeteer/screen/dragAfter.png' });
         //await dragAndDrop(page, target, source);
-        const item = "//div[text()='FLAKY TEST CASES']";
+        const item = "//div[text()='LAUNCH TABLE']";
         await page.screenshot({ path: 'src/tests/puppeteer/screen/scrollBefore.png' });
         await scrollToElement(page, item);
         await page.screenshot({ path: 'src/tests/puppeteer/screen/scrollAfter.png' });
