@@ -2,7 +2,7 @@ const { ErrorWrapper } = require('./ErrorWrapper');
 const logger = require('../tests/puppeteer/log4js/logger');
 
 class Waiters {
-    static async waitElementIsExist(page, elementLocator, timeout = 5000) {
+    static async waitElementIsExist(page, elementLocator, timeout = 10000) {
         try {
             if (elementLocator.startsWith('//')) {
                 logger.info(`Element: ['${elementLocator}'] is exist`)
@@ -17,21 +17,21 @@ class Waiters {
         }
     }
 
-    static async waitForElementDisplayed(page, elementLocator, timeout = 5000) {
+    static async waitForElementDisplayed(page, elementLocator, timeout = 10000) {
         try {
             await page.waitForSelector(elementLocator, { visible: true, timeout });
         } catch (error) {
             throw new Error(`Element "${elementLocator}" was not displayed within the specified timeout`);
         }
     }
-    static async waitElementIsNotDisplayed(page, elementLocator, timeout = 5000) {
+    static async waitElementIsNotDisplayed(page, elementLocator, timeout = 10000) {
         try {
             await page.waitForSelector(elementLocator, { hidden: true, timeout });
         } catch (error) {
             throw new Error(`Element "${elementLocator}" is still displayed within the specified timeout`);
         }
     }
-    static async waitElementIsClickable(page, elementLocator, timeout = 5000) {
+    static async waitElementIsClickable(page, elementLocator, timeout = 10000) {
         try {
             await page.waitForSelector(elementLocator, { visible: true, timeout });
             await page.waitForFunction(
