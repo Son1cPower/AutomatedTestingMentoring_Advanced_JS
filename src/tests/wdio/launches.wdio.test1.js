@@ -7,6 +7,7 @@ describe('Open and check all Launches', () => {
   });
   it('Check exist Launches IDs', async () => {
     const expectedLaunchesIDs = ['1', '2', '3', '4', '5'];
+    await browser.pause(3000);
     await expect(await page('launches').getArrayOfLaunchesIDs(await page('launches').getAllLaunches)).toEqual(
       expectedLaunchesIDs);
   });
