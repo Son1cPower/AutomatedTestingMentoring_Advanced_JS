@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "wdio": "wdio run configs/wdio.shared.conf.js",
-    "api": "mocha --timeout 99000",
+    "api": "mocha --timeout 99000 --reporter-options mochaFile=./test-reports/junit/results-api.xml",
     "wdio:mocha": "wdio run configs/wdio_mocha.conf.js",
     "wdio:jasmine": "wdio run configs/wdio_jasmine.conf.js",
     "wdio:cucumber": "wdio run configs/wdio_cucumber.conf.js",
@@ -44,6 +44,7 @@
     "chai-json-schema": "^1.5.1",
     "chromedriver": "^114.0.1",
     "cucumber": "^6.0.7",
+    "cucumber-junit-formatter": "^0.2.2",
     "cucumber-parallel": "^2.0.3",
     "dotenv": "^16.0.3",
     "eslint": "^8.39.0",
@@ -60,6 +61,7 @@
     "husky": "^8.0.3",
     "log4js": "^6.9.1",
     "mocha": "^10.2.0",
+    "mocha-junit-reporter": "^2.2.0",
     "mochawesome": "^7.1.3",
     "puppeteer": "^20.7.3",
     "puppeteer-core": "^20.7.3",
@@ -75,6 +77,9 @@
   "mocha": {
     "spec": "./src/testsAPI/test.spec.js",
     "require": "chai/register-expect.js",
-    "reporter": "mochawesome"
+    "reporter": "mocha-junit-reporter",
+    "reporterOptions": {
+      "mochaFile": "./test-reports/junit/results-api.xml"
+    }
   }
 }

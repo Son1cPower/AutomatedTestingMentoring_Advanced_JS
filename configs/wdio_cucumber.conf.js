@@ -10,6 +10,7 @@ exports.config = {
         cucumberOpts: {
             // <string[]> (file/dir) require files before executing features
             require: ['./src/step-definitions/*.steps.js', './src/step-definitions/hook.js'],
+            // format: ['json:./test-reports/cucumber/report.json', 'junit:./test-reports/junit/results-cucumber.xml'],
             // <boolean> show full backtrace for errors
             backtrace: false,
             // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -29,7 +30,8 @@ exports.config = {
             // <number> timeout for step definitions
             timeout: 60000,
             // <boolean> Enable this config to treat undefined definitions as warnings.
-            ignoreUndefinedDefinitions: false
+            ignoreUndefinedDefinitions: false,
+
         },
     }
 }

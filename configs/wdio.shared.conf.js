@@ -156,7 +156,7 @@ exports.config = {
     ['junit', {
       outputDir: './test-reports/junit',
       outputFileFormat: function (options) {
-        return `results-${options.cid}.xml`;
+        return `results-mocha.xml`;
       }
     }]
   ],
