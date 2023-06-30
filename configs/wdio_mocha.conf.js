@@ -6,9 +6,6 @@ exports.config = {
   ...sharedConfig, ...{
     specs: ['../src/tests/wdio/*.js'],
     framework: 'mocha',
-    reporters: [
-      'spec'
-    ],
   },
   before: async function (capabilities, specs) {
     await page('login').login(conf.LOGIN, conf.PASSWORD);
