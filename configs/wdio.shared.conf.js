@@ -68,7 +68,7 @@ exports.config = {
           '--disable-infobars',
           // '--headless',
           '--disable-gpu',
-          '--start-maximized',
+          '--start-maximized'
         ]
       },
       // If outputDir is provided WebdriverIO can capture driver session logs
